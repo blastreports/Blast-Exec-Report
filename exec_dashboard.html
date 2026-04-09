@@ -98,7 +98,7 @@ footer{padding:8px 20px 18px;font-size:10px;color:var(--t3);display:flex;justify
       <div class="card"><div class="ch">Revenue by stream <small>€000s · ▸ expand</small></div><div class="cx"><table id="t-rev"></table></div></div>
       <div class="card"><div class="ch">Cost of sales <small>€000s · ▸ expand</small></div><div class="cx"><table id="t-cos"></table></div></div>
     </div>
-    <div class="card"><div class="ch">Commentary <button id="comm-btn" onclick="generateCommentary()" style="font-size:10px;padding:3px 10px;border-radius:5px;border:1px solid #E2E8F0;background:#fff;cursor:pointer;font-weight:500;color:#475569;float:right">Generate commentary</button></div><div class="comm" id="comm"></div></div>
+    <div class="card"><div class="ch">Commentary <small style="font-weight:400;color:#94A3B8;font-size:9px">click to edit</small></div><div class="comm" id="comm" contenteditable="true" spellcheck="false" style="outline:none;cursor:text;min-height:40px;" title="Click to edit commentary"></div></div>
   </div>
   <div class="pane" id="pane-bridge">
     <div class="card"><div class="ch">EBITDA Bridge <small id="br-sub"></small></div><div class="cx"><table class="brt" id="t-br"></table></div></div>
@@ -1795,13 +1795,8 @@ kpis();buildPL();buildRev();buildCos();buildBridge();buildEBTable();
   if(SEL_ECO)buildEcoTable();
 }
 
-function generateCommentary(){
-  document.getElementById("comm").textContent=COMMENTARY_TEXT;
-  var btn=document.getElementById("comm-btn");
-  btn.textContent="Generated ✓";
-  btn.style.color="#1D9E75";
-}
-var COMMENTARY_TEXT='+Yellow EBITDA declined €1.4m to (€11.6m) vs the prior period, driven primarily by a €1.9m increase in Cost of Sales — notably a €1.0m uplift in Riot Studio production costs and higher Other CoS across the portfolio. On revenue, a new Acquisitions deal (Project Raven, +€1.8m) partially offsets downward pressure from Global Betting revisions across Premier (€1.0m) and Dota (€0.5m). Two Premier Host City deals (Malta Film Commission and Malta Studio Leasing) moved from Red back to Yellow, adding €0.6m in visibility. Key watch items: RLCS US event deal lost (€0.2m), Volvic downgraded Yellow to Red with a value reduction, and +Red EBITDA is €8.9m behind prior period as further Global Betting and sponsorship losses crystallise.';
+
+var COMMENTARY_TEXT='+Yellow EBITDA declined €1.4m to (€11.6m) vs 23.03, with Sponsorship the primary drag at €2.0m negative — driven by Global Betting value reductions across Premier (€1.0m) and Dota (€0.5m), a lost RLCS US event deal (€0.2m), and Volvic downgraded to Red with a simultaneous value cut. Partially offsetting, a new Acquisitions deal (Project Raven) added €1.8m in Yellow visibility and two Premier Host City deals (Malta Film Commission and Malta Studio Leasing) moved from Red back to Yellow (+€0.6m). CoS also increased €1.9m, reflecting updated event cost phasing across the portfolio. Key watch items for the next period: Global Betting across all ecosystems (€2.5m still at risk in Red), Volvic now fully in Red, and +Yellow remains €24.9m behind budget with Production Fees and Sponsorship as the primary gaps.';
 
 
 document.querySelectorAll(".tab").forEach(function(btn){btn.addEventListener("click",function(){
@@ -2026,7 +2021,7 @@ function initDealsTab(deals,ecos,types){
 
 
 kpis();buildPL();buildRev();buildCos();buildBridge();buildEBTable();buildEcoGrid();buildYoy();buildYoyTable();
-document.getElementById("comm").textContent=COMMENTARY_TEXT;
+var _ce=document.getElementById("comm");if(_ce&&COMMENTARY_TEXT)_ce.textContent=COMMENTARY_TEXT;
 initDealsTab(DEALS_DATA.deals,DEALS_DATA.ecos,DEALS_DATA.types);
 </script>
 </body>
