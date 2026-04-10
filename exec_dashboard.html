@@ -955,6 +955,24 @@ const DEALS_DATA={deals:[
   {eco:"R6",type:"In-Game",status:"R",name:"3. In-Game Transactions & MTX (R6) - Q3 - R",loc:"212069",ccy:"EUR",eur:212069},
   {eco:"Premier",type:"BLAST Channels",status:"B",name:"Advertising - KICK (Premier) - 2026",loc:"9400",ccy:"EUR",eur:9400},
 ],ecos:["", "Acquisitions", "BLAST TV", "Dota", "FNCS", "New Formats", "Other Publishers", "PUBG", "Premier", "R6", "RLCS", "Riot (New Biz)", "Riot (Studio)", "Supercell"],types:["BLAST Channels", "Host City", "In-Game", "Media Rights", "Merchandise", "Other Revenue", "Publisher Fee", "Sponsorship", "Ticketing"]};
+const ECO_BUD={
+  "Premier":{rev:{"Sponsorship":9439,"Media Rights":9655,"Host City":1464,"BLAST Channels":295,"Ticketing":3511,"Merchandise":23},ec_event:-11767,ec_prize:-5709,rs:0,other_cos:-659},
+  "Dota":{rev:{"Sponsorship":5077,"Media Rights":5599,"Host City":813,"BLAST Channels":45,"Ticketing":910,"Merchandise":5},ec_event:-4675,ec_prize:-3665,rs:0,other_cos:-185},
+  "Supercell":{rev:{"Sponsorship":750,"Publisher Fee":12073},ec_event:-6630,ec_prize:-1709,rs:0,other_cos:-75},
+  "R6":{rev:{"Sponsorship":555,"Media Rights":241,"Publisher Fee":21725,"BLAST Channels":40,"Ticketing":502,"Merchandise":8,"In-Game":3250},ec_event:-16508,ec_prize:-5300,rs:-405,other_cos:-283},
+  "RLCS":{rev:{"Sponsorship":5828,"Media Rights":110,"Host City":589,"Publisher Fee":9063,"BLAST Channels":275,"Ticketing":2881,"Merchandise":12},ec_event:-9454,ec_prize:0,rs:0,other_cos:-594},
+  "FNCS":{rev:{"Sponsorship":4318,"Media Rights":75,"Host City":85,"Publisher Fee":12000,"BLAST Channels":75,"Ticketing":1215,"Merchandise":8},ec_event:-11854,ec_prize:0,rs:0,other_cos:-217},
+  "Riot (Studio)":{rev:{"Publisher Fee":14924},ec_event:-10860,ec_prize:0,rs:0,other_cos:0},
+  "Riot (New Biz)":{rev:{},ec_event:0,ec_prize:0,rs:0,other_cos:0},
+  "Wimbledon":{rev:{"Publisher Fee":760},ec_event:-411,ec_prize:0,rs:0,other_cos:0},
+  "BLAST TV":{rev:{"BLAST Channels":10},ec_event:0,ec_prize:0,rs:0,other_cos:-300},
+  "Other Publishers":{rev:{"Sponsorship":826,"Publisher Fee":15460,"BLAST Channels":500},ec_event:-7521,ec_prize:-347,rs:0,other_cos:-83},
+  "New Formats":{rev:{},ec_event:0,ec_prize:0,rs:0,other_cos:0},
+  "Acquisitions":{rev:{},ec_event:0,ec_prize:0,rs:0,other_cos:0},
+  "Corporate":{rev:{},ec_event:0,ec_prize:0,rs:0,other_cos:0},
+  "Total":{rev:{"Sponsorship":26793,"Media Rights":15680,"Host City":2951,"Publisher Fee":86005,"BLAST Channels":1240,"Ticketing":9019,"Merchandise":56,"In-Game":3250},ec_event:-79680,ec_prize:-16730,rs:-405,other_cos:-2396},
+  "Riot (Combined)":{rev:{"Publisher Fee":14924},ec_event:-10860,ec_prize:0,rs:0,other_cos:0},
+};
 /* ══════════ END DATA BLOCK ══════════ */
 
 let SC="BGY",SEL_ECO=null,YOY_MODE="abs",SHOW_BG=true;
@@ -1624,7 +1642,7 @@ function buildEcoTable(){
   }
 
   // ── drill-through child row ──
-  function childRow(lbl,vals,groupXid,indent){
+  function childRow(lbl,vals,groupXid,indent,budVal){
     var pl=(indent||28)+"px";
     var sz=indent>28?"10px":"10.5px";
     var row="<tr class='xrow "+groupXid+"'>";
@@ -1633,12 +1651,15 @@ function buildEcoTable(){
       var v=(vals[c]!==undefined&&vals[c]!==null)?vals[c]:null;
       row+="<td"+hiCol(c)+" class='"+vcl(v)+"' style='font-size:"+sz+"'>"+fkv(v)+"</td>";
     });
-    row+="<td>\u2014</td></tr>";
+    if(typeof budVal==="number"&&typeof vals[SC]==="number"){
+      var bd=+((vals[SC]-budVal)/1000).toFixed(1);
+      row+="<td style='font-size:"+sz+"' class='"+(bd>=0?"pos":"neg")+"'>"+(bd>=0?"+":"")+bd+"m</td>";
+    } else { row+="<td>\u2014</td>"; }
     return row;
   }
 
   // ── expandable child row (parent of its own group) ──
-  function childParentRow(lbl,vals,groupXid,ownXid){
+  function childParentRow(lbl,vals,groupXid,ownXid,budVal){
     var row="<tr class='xrow "+groupXid+"' style='cursor:pointer' onclick=\"xEco('"+ownXid+"')\">";
     row+="<td style='padding-left:28px;font-size:10.5px;color:var(--t2)'>";
     row+="<span id='ic_"+ownXid+"' style='font-size:9px;color:#aaa;margin-right:4px'>\u25b8</span>"+lbl+"</td>";
@@ -1646,7 +1667,11 @@ function buildEcoTable(){
       var v=(vals[c]!==undefined&&vals[c]!==null)?vals[c]:null;
       row+="<td"+hiCol(c)+" class='"+vcl(v)+"' style='font-size:10.5px'>"+fkv(v)+"</td>";
     });
-    row+="<td>\u2014</td></tr>";
+    if(typeof budVal==="number"&&typeof vals[SC]==="number"){
+      var bd=+((vals[SC]-budVal)/1000).toFixed(1);
+      row+="<td style='font-size:10.5px' class='"+(bd>=0?"pos":"neg")+"'>"+(bd>=0?"+":"")+bd+"m</td>";
+    } else { row+="<td>\u2014</td>"; }
+    row+="</tr>";
     return row;
   }
 
@@ -1671,11 +1696,14 @@ function buildEcoTable(){
     var sortedRevKeys=TYPE_ORDER.filter(function(k){return revKeys.has(k);});
     [].concat([...revKeys]).forEach(function(k){if(!TYPE_ORDER.includes(k))sortedRevKeys.push(k);});
 
+    var _eb=ECO_BUD[SEL_ECO]||{};
     sortedRevKeys.forEach(function(k){
       var vals={bud:null,WV:null};
       ["B","BG","BGY","BGYR"].forEach(function(sc){vals[sc]=drill[sc]?(drill[sc].rev[k]||0):0;});
       vals.WV=vals.B;
-      b+=childRow(k,vals,revXid,28);
+      var bv=(_eb.rev&&_eb.rev[k]!==undefined)?_eb.rev[k]:null;
+      vals.bud=bv;
+      b+=childRow(k,vals,revXid,28,bv);
     });
   }
 
@@ -1683,17 +1711,26 @@ function buildEcoTable(){
   b+=sumRow("Cost of Sales","cos","ind",cosXid);
   if(drill){
     // Event Costs
-    b+=childRow("Event Costs", drillVals(function(d){return d.ec_event;}), cosXid, 28);
+    var _ecV=drillVals(function(d){return d.ec_event;});
+    _ecV.bud=_eb.ec_event||null;
+    b+=childRow("Event Costs", _ecV, cosXid, 28, _eb.ec_event||null);
 
     // Prize Money (only if non-zero anywhere)
     var hasPM=["B","BG","BGY","BGYR"].some(function(sc){return drill[sc]&&drill[sc].ec_prize!==0;});
-    if(hasPM) b+=childRow("Prize Money", drillVals(function(d){return d.ec_prize;}), cosXid, 28);
+    if(hasPM){
+      var _pmV=drillVals(function(d){return d.ec_prize;});
+      _pmV.bud=_eb.ec_prize||null;
+      b+=childRow("Prize Money", _pmV, cosXid, 28, _eb.ec_prize||null);
+    }
 
     // Revenue Share (always show)
-    b+=childRow("Revenue Share", drillVals(function(d){return d.rs;}), cosXid, 28);
+    var _rsV=drillVals(function(d){return d.rs;});
+    _rsV.bud=_eb.rs||null;
+    b+=childRow("Revenue Share", _rsV, cosXid, 28, _eb.rs||null);
 
     // Other CoS parent
-    var ocVals={bud:null,WV:null};
+    var _ocBud=_eb.other_cos||null;
+    var ocVals={bud:_ocBud,WV:null};
     ["B","BG","BGY","BGYR"].forEach(function(sc){
       var d=drill[sc]||{};
       ocVals[sc]=(d.tick_cos||0)+(d.nt_act||0)+(d.nt_comm||0)+(d.nt_merch||0)+(d.nt_oth||0);
