@@ -185,13 +185,13 @@ const BUD_R=145.0;
 const BUD_E=13.3;
 const BUD_GM=45.8;
 const CUR={
-  rev:{B:52.1,BG:96.6,BGY:113.9,BGYR:165.9,WV:111.2},
-  cos:{B:-71.9,BG:-89.1,BGY:-92.8,BGYR:-114.6,WV:-93.9},
-  gm:{B:-19.9,BG:7.5,BGY:21.1,BGYR:51.3,WV:17.4},
+  rev:{B:52.1,BG:96.7,BGY:113.9,BGYR:163.3,WV:110.8},
+  cos:{B:-71.9,BG:-89.1,BGY:-92.7,BGYR:-114.0,WV:-93.7},
+  gm:{B:-19.9,BG:7.6,BGY:21.2,BGYR:49.3,WV:17.1},
   ts:{B:-2.8,BG:-2.8,BGY:-2.8,BGYR:-2.8,WV:-2.8},
-  con:{B:-22.7,BG:4.7,BGY:18.3,BGYR:48.5,WV:14.6},
+  con:{B:-22.7,BG:4.8,BGY:18.4,BGYR:46.5,WV:14.3},
   opex:{B:-29.7,BG:-29.7,BGY:-29.7,BGYR:-29.7,WV:-29.7},
-  eb:{B:-52.4,BG:-24.9,BGY:-11.4,BGYR:18.8,WV:-15.1},
+  eb:{B:-52.3,BG:-24.9,BGY:-11.3,BGYR:16.8,WV:-15.4},
 };
 const PRV={
   rev:{B:51.7,BG:96.5,BGY:114.0,BGYR:169.0,WV:111.6},
@@ -200,7 +200,7 @@ const PRV={
   ts:{B:-2.8,BG:-2.8,BGY:-2.8,BGYR:-2.8,WV:-2.8},
   con:{B:-22.7,BG:5.2,BGY:18.1,BGYR:51.8,WV:15.2},
   opex:{B:-29.7,BG:-29.7,BGY:-29.7,BGYR:-29.7,WV:-29.7},
-  eb:{B:-52.4,BG:-24.5,BGY:-11.6,BGYR:22.1,WV:-14.4},
+  eb:{B:-52.4,BG:-24.5,BGY:-11.6,BGYR:22.2,WV:-14.4},
 };
 const RCAT=[
   {n:"Brand Commercialisation",c:"#3266AD",t:{bud:45422,B:23738,BG:25399,BGY:36467,BGYR:60090,WV:33067},r:[
@@ -221,31 +221,31 @@ const RCAT=[
 ];
 const RTOT={bud:144988,B:52054,BG:96652,BGY:113858,BGYR:163295,WV:110848};
 const CROW=[
-  {n:"Event Costs",bud:-79679,B:-55424,BG:-70410,BGY:-72499,BGYR:-88921,WV:-73918},
-  {n:"Prize Money",bud:-16730,B:-14646,BG:-16356,BGY:-16356,BGYR:-20186,WV:-16930},
-  {n:"Other CoS & Rev Share",bud:-2803,B:-1877,BG:-2334,BGY:-3933,BGYR:-5503,WV:-3005},
+  {n:"Event Costs",bud:-79679,B:-55584.6,BG:-70559.1,BGY:-72589.8,BGYR:-88716.2,WV:-73993.4},
+  {n:"Prize Money",bud:-16730,B:-14646.4,BG:-16355.8,BGY:-16355.8,BGYR:-20185.8,WV:-16930.3},
+  {n:"Other CoS & Rev Share",bud:-2803,B:-1703.8000000000002,BG:-2172.1,BGY:-3719.3999999999996,BGYR:-5130.0,WV:-2807.8},
 ];
-const CTOT={bud:-99213,B:-71947,BG:-89100,BGY:-92788,BGYR:-114610,WV:-93853};
+const CTOT={bud:-99213,B:-71934.9,BG:-89087.0,BGY:-92665.0,BGYR:-114032.0,WV:-93731.7};
 const ECOS_RAW=[
- {k:"Premier",c:"#185FA5",rev:{bud:24385,B:14195,BG:16569,BGY:24198,BGYR:30620,WV:20483},cos:{bud:-18136,B:-19323,BG:-19553,BGY:-20093,BGYR:-20628,WV:-19772},gp:{bud:6249,B:-5128,BG:-2984,BGY:4105,BGYR:9991,WV:711},gpP:{"bud":"26%","B":"-36%","BG":"-18%","BGY":"17%","BGYR":"33%","WV":"3%"},ts:{bud:-1709,B:-1709,BG:-1709,BGY:-1709,BGYR:-1709,WV:-1709},con:{bud:4539,B:-6837,BG:-4694,BGY:2396,BGYR:8282,WV:-998},opex:{bud:-328,B:0,BG:0,BGY:0,BGYR:0,WV:0},eb:{bud:4212,B:-6837,BG:-4694,BGY:2396,BGYR:8282,WV:-998},ebP:{"bud":"17%","B":"-48%","BG":"-28%","BGY":"10%","BGYR":"27%","WV":"-5%"}},
- {k:"Dota",c:"#BA7517",rev:{bud:12448,B:6576,BG:6626,BGY:8734,BGYR:10994,WV:7848},cos:{bud:-8525,B:-7935,BG:-7935,BGY:-8112,BGYR:-8151,WV:-8001},gp:{bud:3923,B:-1359,BG:-1309,BGY:623,BGYR:2843,WV:-153},gpP:{"bud":"32%","B":"-21%","BG":"-20%","BGY":"7%","BGYR":"26%","WV":"-2%"},ts:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},con:{bud:3923,B:-1359,BG:-1309,BGY:623,BGYR:2843,WV:-153},opex:{bud:-516,B:0,BG:0,BGY:0,BGYR:0,WV:0},eb:{bud:3407,B:-1359,BG:-1309,BGY:623,BGYR:2843,WV:-153},ebP:{"bud":"27%","B":"-21%","BG":"-20%","BGY":"7%","BGYR":"26%","WV":"-2%"}},
- {k:"RLCS",c:"#0F6E56",rev:{bud:18757,B:12652,BG:13400,BGY:14706,BGYR:22134,WV:15039},cos:{bud:-10049,B:-12605,BG:-12619,BGY:-12630,BGYR:-15124,WV:-12985},gp:{bud:8709,B:48,BG:781,BGY:2076,BGYR:7010,WV:2054},gpP:{"bud":"46%","B":"0%","BG":"6%","BGY":"14%","BGYR":"32%","WV":"14%"},ts:{bud:-1068,B:-1068,BG:-1068,BGY:-1068,BGYR:-1068,WV:-1068},con:{bud:7640,B:-1021,BG:-287,BGY:1008,BGYR:5941,WV:986},opex:{bud:-353,B:0,BG:0,BGY:0,BGYR:0,WV:0},eb:{bud:7287,B:-1021,BG:-287,BGY:1008,BGYR:5941,WV:986},ebP:{"bud":"39%","B":"-8%","BG":"-2%","BGY":"7%","BGYR":"27%","WV":"7%"}},
- {k:"FNCS",c:"#534AB7",rev:{bud:17776,B:9753,BG:10483,BGY:11185,BGYR:27090,WV:13128},cos:{bud:-12071,B:-8448,BG:-8503,BGY:-8516,BGYR:-12502,WV:-9068},gp:{bud:5705,B:1305,BG:1980,BGY:2669,BGYR:14588,WV:4060},gpP:{"bud":"32%","B":"13%","BG":"19%","BGY":"24%","BGYR":"54%","WV":"31%"},ts:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},con:{bud:5705,B:1305,BG:1980,BGY:2669,BGYR:14588,WV:4060},opex:{bud:-387,B:0,BG:0,BGY:0,BGYR:0,WV:0},eb:{bud:5318,B:1305,BG:1980,BGY:2669,BGYR:14588,WV:4060},ebP:{"bud":"30%","B":"13%","BG":"19%","BGY":"24%","BGYR":"54%","WV":"31%"}},
- {k:"R6",c:"#993C1D",rev:{bud:26320,B:6132,BG:23956,BGY:26029,BGYR:26854,WV:24819},cos:{bud:-22496,B:-21601,BG:-21760,BGY:-22784,BGYR:-22784,WV:-22255},gp:{bud:3825,B:-15470,BG:2196,BGY:3245,BGYR:4070,WV:2564},gpP:{"bud":"15%","B":"-252%","BG":"9%","BGY":"12%","BGYR":"15%","WV":"10%"},ts:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},con:{bud:3825,B:-15470,BG:2196,BGY:3245,BGYR:4070,WV:2564},opex:{bud:-1607,B:0,BG:0,BGY:0,BGYR:0,WV:0},eb:{bud:2218,B:-15470,BG:2196,BGY:3245,BGYR:4070,WV:2564},ebP:{"bud":"8%","B":"-252%","BG":"9%","BGY":"12%","BGYR":"15%","WV":"10%"}},
- {k:"Riot (Studio)",c:"#888780",rev:{bud:14924,B:2632,BG:10924,BGY:11824,BGYR:13324,WV:11599},cos:{bud:-10860,B:-1834,BG:-7736,BGY:-8501,BGYR:-9776,WV:-8309},gp:{bud:4064,B:798,BG:3188,BGY:3323,BGYR:3548,WV:3290},gpP:{"bud":"27%","B":"30%","BG":"29%","BGY":"28%","BGYR":"27%","WV":"28%"},ts:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},con:{bud:4064,B:798,BG:3188,BGY:3323,BGYR:3548,WV:3290},opex:{bud:-1096,B:0,BG:0,BGY:0,BGYR:0,WV:0},eb:{bud:2968,B:798,BG:3188,BGY:3323,BGYR:3548,WV:3290},ebP:{"bud":"20%","B":"30%","BG":"29%","BGY":"28%","BGYR":"27%","WV":"28%"}},
- {k:"Riot (New Biz)",c:"#B4B2A9",rev:{bud:0,B:0,BG:2520,BGY:2520,BGYR:4824,WV:2866},cos:{bud:0,B:0,BG:-2165,BGY:-2165,BGYR:-4123,WV:-2459},gp:{bud:0,B:0,BG:355,BGY:355,BGYR:701,WV:407},gpP:{"bud":"-","B":"-","BG":"14%","BGY":"14%","BGYR":"15%","WV":"14%"},ts:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},con:{bud:0,B:0,BG:355,BGY:355,BGYR:701,WV:407},opex:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},eb:{bud:0,B:0,BG:355,BGY:355,BGYR:701,WV:407},ebP:{"bud":"-","B":"-","BG":"14%","BGY":"14%","BGYR":"15%","WV":"14%"}},
- {k:"Supercell",c:"#993556",rev:{bud:12823,B:65,BG:12092,BGY:12655,BGYR:13490,WV:12491},cos:{bud:-8414,B:0,BG:-8629,BGY:-8818,BGYR:-9012,WV:-8743},gp:{bud:4408,B:65,BG:3463,BGY:3836,BGYR:4478,WV:3748},gpP:{"bud":"34%","B":"100%","BG":"29%","BGY":"30%","BGYR":"33%","WV":"30%"},ts:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},con:{bud:4408,B:65,BG:3463,BGY:3836,BGYR:4478,WV:3748},opex:{bud:-1263,B:0,BG:0,BGY:0,BGYR:0,WV:0},eb:{bud:3145,B:65,BG:3463,BGY:3836,BGYR:4478,WV:3748},ebP:{"bud":"25%","B":"100%","BG":"29%","BGY":"30%","BGYR":"33%","WV":"30%"}},
- {k:"Wimbledon",c:"#639922",rev:{bud:760,B:0,BG:0,BGY:0,BGYR:0,WV:0},cos:{bud:-411,B:0,BG:0,BGY:0,BGYR:0,WV:0},gp:{bud:349,B:0,BG:0,BGY:0,BGYR:0,WV:0},gpP:{"bud":"46%","B":"-","BG":"-","BGY":"-","BGYR":"-","WV":"-"},ts:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},con:{bud:349,B:0,BG:0,BGY:0,BGYR:0,WV:0},opex:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},eb:{bud:349,B:0,BG:0,BGY:0,BGYR:0,WV:0},ebP:{"bud":"46%","B":"-","BG":"-","BGY":"-","BGYR":"-","WV":"-"}},
- {k:"BLAST TV",c:"#3266ad",rev:{bud:10,B:49,BG:54,BGY:59,BGYR:1259,WV:237},cos:{bud:-300,B:-201,BG:-201,BGY:-201,BGYR:-201,WV:-201},gp:{bud:-290,B:-152,BG:-147,BGY:-142,BGYR:1058,WV:36},gpP:{"bud":"-2900%","B":"-310%","BG":"-272%","BGY":"-241%","BGYR":"84%","WV":"15%"},ts:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},con:{bud:-290,B:-152,BG:-147,BGY:-142,BGYR:1058,WV:36},opex:{bud:-56,B:0,BG:0,BGY:0,BGYR:0,WV:0},eb:{bud:-346,B:-152,BG:-147,BGY:-142,BGYR:1058,WV:36},ebP:{"bud":"-3460%","B":"-310%","BG":"-272%","BGY":"-241%","BGYR":"84%","WV":"15%"}},
- {k:"Other Publishers",c:"#888780",rev:{bud:16786,B:0,BG:0,BGY:175,BGYR:2820,WV:484},cos:{bud:-7951,B:0,BG:0,BGY:-123,BGYR:-2371,WV:-399},gp:{bud:8835,B:0,BG:0,BGY:53,BGYR:449,WV:85},gpP:{"bud":"53%","B":"-","BG":"-","BGY":"30%","BGYR":"16%","WV":"18%"},ts:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},con:{bud:8835,B:0,BG:0,BGY:53,BGYR:449,WV:85},opex:{bud:-2456,B:0,BG:0,BGY:0,BGYR:0,WV:0},eb:{bud:6379,B:0,BG:0,BGY:53,BGYR:449,WV:85},ebP:{"bud":"38%","B":"-","BG":"-","BGY":"30%","BGYR":"16%","WV":"18%"}},
- {k:"New Formats",c:"#D85A30",rev:{bud:0,B:0,BG:0,BGY:0,BGYR:10696,WV:1604},cos:{bud:0,B:0,BG:0,BGY:0,BGYR:-9092,WV:-1364},gp:{bud:0,B:0,BG:0,BGY:0,BGYR:1604,WV:240},gpP:{"bud":"-","B":"-","BG":"-","BGY":"-","BGYR":"15%","WV":"15%"},ts:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},con:{bud:0,B:0,BG:0,BGY:0,BGYR:1604,WV:240},opex:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},eb:{bud:0,B:0,BG:0,BGY:0,BGYR:1604,WV:240},ebP:{"bud":"-","B":"-","BG":"-","BGY":"-","BGYR":"15%","WV":"15%"}},
- {k:"Corporate",c:"#444441",rev:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},cos:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},gp:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},gpP:{"bud":"-","B":"-","BG":"-","BGY":"-","BGYR":"-","WV":"-"},ts:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},con:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},opex:{bud:-21605,B:-29690,BG:-29690,BGY:-29690,BGYR:-29690,WV:-29690},eb:{bud:-21605,B:-29690,BG:-29690,BGY:-29690,BGYR:-29690,WV:-29690},ebP:{"bud":"-","B":"-","BG":"-","BGY":"-","BGYR":"-","WV":"-"}},
- {k:"Acquisitions",c:"#7C3AED",rev:{bud:0,B:0,BG:0,BGY:1792,BGYR:1792,WV:627},cos:{bud:0,B:0,BG:0,BGY:-846,BGYR:-846,WV:-296},gp:{bud:0,B:0,BG:0,BGY:946,BGYR:946,WV:331},gpP:{"bud":"-","B":"-","BG":"-","BGY":"53%","BGYR":"53%","WV":"53%"},ts:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},con:{bud:0,B:0,BG:0,BGY:946,BGYR:946,WV:331},opex:{bud:0,B:0,BG:0,BGY:0,BGYR:0,WV:0},eb:{bud:0,B:0,BG:0,BGY:946,BGYR:946,WV:331},ebP:{"bud":"-","B":"-","BG":"-","BGY":"53%","BGYR":"53%","WV":"53%"}},
+ {k:"Premier",c:"#185FA5",rev:{bud:24385,B:14195.3,BG:16598.9,BGY:24168.1,BGYR:30295.6,WV:14195.3},cos:{bud:-18136,B:-19216.2,BG:-19463.0,BGY:-19956.8,BGYR:-20406.4,WV:-19216.2},gp:{bud:6249,B:-5020.9,BG:-2864.1,BGY:4211.3,BGYR:9889.2,WV:-5020.9},gpP:{"bud":"26%","B":"-35%","BG":"-17%","BGY":"17%","BGYR":"33%","WV":"-"},ts:{bud:-1709,B:-1709.4,BG:-1709.4,BGY:-1709.4,BGYR:-1709.4,WV:-1709.4},con:{bud:4539,B:-6730.3,BG:-4573.5,BGY:2501.9,BGYR:8179.8,WV:-6730.3},opex:{bud:-328,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},eb:{bud:4212,B:-6730.3,BG:-4573.5,BGY:2501.9,BGYR:8179.8,WV:-6730.3},ebP:{"bud":"17%","B":"-47%","BG":"-28%","BGY":"10%","BGYR":"27%","WV":"-"}},
+ {k:"Dota",c:"#BA7517",rev:{bud:12448,B:6576.2,BG:6626.2,BGY:8734.4,BGYR:10994.4,WV:6576.2},cos:{bud:-8525,B:-7895.4,BG:-7895.4,BGY:-8066.6,BGYR:-8106.1,WV:-7895.4},gp:{bud:3923,B:-1319.2,BG:-1269.2,BGY:667.8,BGYR:2888.3,WV:-1319.2},gpP:{"bud":"32%","B":"-20%","BG":"-19%","BGY":"8%","BGYR":"26%","WV":"-"},ts:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},con:{bud:3923,B:-1319.2,BG:-1269.2,BGY:667.8,BGYR:2888.3,WV:-1319.2},opex:{bud:-516,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},eb:{bud:3407,B:-1319.2,BG:-1269.2,BGY:667.8,BGYR:2888.3,WV:-1319.2},ebP:{"bud":"27%","B":"-20%","BG":"-19%","BGY":"8%","BGYR":"26%","WV":"-"}},
+ {k:"RLCS",c:"#0F6E56",rev:{bud:18757,B:12652.4,BG:13399.8,BGY:14716.8,BGYR:21420.3,WV:12652.4},cos:{bud:-10049,B:-12580.7,BG:-12594.4,BGY:-12651.8,BGYR:-15117.5,WV:-12580.7},gp:{bud:8709,B:71.7,BG:805.4,BGY:2065.1,BGYR:6302.7,WV:71.7},gpP:{"bud":"46%","B":"1%","BG":"6%","BGY":"14%","BGYR":"29%","WV":"-"},ts:{bud:-1068,B:-1068.4,BG:-1068.4,BGY:-1068.4,BGYR:-1068.4,WV:-1068.4},con:{bud:7640,B:-996.7,BG:-263.0,BGY:996.7,BGYR:5234.3,WV:-996.7},opex:{bud:-353,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},eb:{bud:7287,B:-996.7,BG:-263.0,BGY:996.7,BGYR:5234.3,WV:-996.7},ebP:{"bud":"39%","B":"-8%","BG":"-2%","BGY":"7%","BGYR":"24%","WV":"-"}},
+ {k:"FNCS",c:"#534AB7",rev:{bud:17776,B:9752.7,BG:10482.5,BGY:11184.7,BGYR:25525.6,WV:9752.7},cos:{bud:-12071,B:-8446.1,BG:-8501.1,BGY:-8514.2,BGYR:-12454.8,WV:-8446.1},gp:{bud:5705,B:1306.5,BG:1981.5,BGY:2670.5,BGYR:13070.8,WV:1306.5},gpP:{"bud":"32%","B":"13%","BG":"19%","BGY":"24%","BGYR":"51%","WV":"-"},ts:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},con:{bud:5705,B:1306.5,BG:1981.5,BGY:2670.5,BGYR:13070.8,WV:1306.5},opex:{bud:-387,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},eb:{bud:5318,B:1306.5,BG:1981.5,BGY:2670.5,BGYR:13070.8,WV:1306.5},ebP:{"bud":"30%","B":"13%","BG":"19%","BGY":"24%","BGYR":"51%","WV":"-"}},
+ {k:"R6",c:"#993C1D",rev:{bud:26320,B:6131.6,BG:23956.1,BGY:26028.6,BGYR:26853.6,WV:6131.6},cos:{bud:-22496,B:-21601.3,BG:-21754.0,BGY:-22778.0,BGYR:-22778.0,WV:-21601.3},gp:{bud:3825,B:-15469.7,BG:2202.2,BGY:3250.6,BGYR:4075.6,WV:-15469.7},gpP:{"bud":"15%","B":"-252%","BG":"9%","BGY":"12%","BGYR":"15%","WV":"-"},ts:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},con:{bud:3825,B:-15469.7,BG:2202.2,BGY:3250.6,BGYR:4075.6,WV:-15469.7},opex:{bud:-1607,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},eb:{bud:2218,B:-15469.7,BG:2202.2,BGY:3250.6,BGYR:4075.6,WV:-15469.7},ebP:{"bud":"8%","B":"-252%","BG":"9%","BGY":"12%","BGYR":"15%","WV":"-"}},
+ {k:"Riot (Studio)",c:"#888780",rev:{bud:14924,B:2631.7,BG:10923.9,BGY:11823.9,BGYR:13323.9,WV:2631.7},cos:{bud:-10860,B:-1994.5,BG:-8757.3,BGY:-9539.9,BGYR:-10844.3,WV:-1994.5},gp:{bud:4064,B:637.2,BG:2166.6,BGY:2284.0,BGYR:2479.6,WV:637.2},gpP:{"bud":"27%","B":"24%","BG":"20%","BGY":"19%","BGYR":"19%","WV":"-"},ts:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},con:{bud:4064,B:637.2,BG:2166.6,BGY:2284.0,BGYR:2479.6,WV:637.2},opex:{bud:-1096,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},eb:{bud:2968,B:637.2,BG:2166.6,BGY:2284.0,BGYR:2479.6,WV:637.2},ebP:{"bud":"20%","B":"24%","BG":"20%","BGY":"19%","BGYR":"19%","WV":"-"}},
+ {k:"Riot (New Biz)",c:"#B4B2A9",rev:{bud:0,B:0.0,BG:2520.3,BGY:2520.3,BGYR:4824.1,WV:0.0},cos:{bud:0,B:0.0,BG:-1169.8,BGY:-1169.8,BGYR:-3128.0,WV:0.0},gp:{bud:0,B:0.0,BG:1350.5,BGY:1350.5,BGYR:1696.0,WV:0.0},gpP:{"bud":"-","B":"-","BG":"54%","BGY":"54%","BGYR":"35%","WV":"-"},ts:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},con:{bud:0,B:0.0,BG:1350.5,BGY:1350.5,BGYR:1696.0,WV:0.0},opex:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},eb:{bud:0,B:0.0,BG:1350.5,BGY:1350.5,BGYR:1696.0,WV:0.0},ebP:{"bud":"-","B":"-","BG":"54%","BGY":"54%","BGYR":"35%","WV":"-"}},
+ {k:"Supercell",c:"#993556",rev:{bud:12823,B:65.0,BG:12091.6,BGY:12654.9,BGYR:13490.3,WV:65.0},cos:{bud:-8414,B:0.0,BG:-8628.5,BGY:-8818.5,BGYR:-9012.1,WV:0.0},gp:{bud:4408,B:65.0,BG:3463.1,BGY:3836.4,BGYR:4478.1,WV:65.0},gpP:{"bud":"34%","B":"100%","BG":"29%","BGY":"30%","BGYR":"33%","WV":"-"},ts:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},con:{bud:4408,B:65.0,BG:3463.1,BGY:3836.4,BGYR:4478.1,WV:65.0},opex:{bud:-1263,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},eb:{bud:3145,B:65.0,BG:3463.1,BGY:3836.4,BGYR:4478.1,WV:65.0},ebP:{"bud":"25%","B":"100%","BG":"29%","BGY":"30%","BGYR":"33%","WV":"-"}},
+ {k:"Wimbledon",c:"#639922",rev:{bud:760,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},cos:{bud:-411,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},gp:{bud:349,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},gpP:{"bud":"46%","B":"-","BG":"-","BGY":"-","BGYR":"-","WV":"-"},ts:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},con:{bud:349,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},opex:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},eb:{bud:349,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},ebP:{"bud":"46%","B":"-","BG":"-","BGY":"-","BGYR":"-","WV":"-"}},
+ {k:"BLAST TV",c:"#3266ad",rev:{bud:10,B:48.8,BG:53.7,BGY:58.6,BGYR:1258.6,WV:48.8},cos:{bud:-300,B:-200.7,BG:-200.7,BGY:-200.7,BGYR:-200.7,WV:-200.7},gp:{bud:-290,B:-152.0,BG:-147.1,BGY:-142.2,BGYR:1057.8,WV:-152.0},gpP:{"bud":"-2900%","B":"-311%","BG":"-274%","BGY":"-243%","BGYR":"84%","WV":"-"},ts:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},con:{bud:-290,B:-152.0,BG:-147.1,BGY:-142.2,BGYR:1057.8,WV:-152.0},opex:{bud:-56,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},eb:{bud:-346,B:-152.0,BG:-147.1,BGY:-142.2,BGYR:1057.8,WV:-152.0},ebP:{"bud":"-3460%","B":"-311%","BG":"-274%","BGY":"-243%","BGYR":"84%","WV":"-"}},
+ {k:"Other Publishers",c:"#888780",rev:{bud:16786,B:0.0,BG:0.0,BGY:175.3,BGYR:2820.4,WV:0.0},cos:{bud:-7951,B:0.0,BG:-122.7,BGY:-122.7,BGYR:-2371.0,WV:0.0},gp:{bud:8835,B:0.0,BG:-122.7,BGY:52.6,BGYR:449.4,WV:0.0},gpP:{"bud":"53%","B":"-","BG":"-","BGY":"30%","BGYR":"16%","WV":"-"},ts:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},con:{bud:8835,B:0.0,BG:-122.7,BGY:52.6,BGYR:449.4,WV:0.0},opex:{bud:-2456,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},eb:{bud:6379,B:0.0,BG:-122.7,BGY:52.6,BGYR:449.4,WV:0.0},ebP:{"bud":"38%","B":"-","BG":"-","BGY":"30%","BGYR":"16%","WV":"-"}},
+ {k:"New Formats",c:"#D85A30",rev:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:10696.2,WV:0.0},cos:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:-8766.8,WV:0.0},gp:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:1929.4,WV:0.0},gpP:{"bud":"-","B":"-","BG":"-","BGY":"-","BGYR":"18%","WV":"-"},ts:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},con:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:1929.4,WV:0.0},opex:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},eb:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:1929.4,WV:0.0},ebP:{"bud":"-","B":"-","BG":"-","BGY":"-","BGYR":"18%","WV":"-"}},
+ {k:"Corporate",c:"#444441",rev:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},cos:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},gp:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},gpP:{"bud":"-","B":"-","BG":"-","BGY":"-","BGYR":"-","WV":"-"},ts:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},con:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},opex:{bud:-21605,B:-29689.6,BG:-29689.6,BGY:-29689.6,BGYR:-29689.6,WV:-29689.6},eb:{bud:-21605,B:-29689.6,BG:-29689.6,BGY:-29689.6,BGYR:-29689.6,WV:-29689.6},ebP:{"bud":"-","B":"-","BG":"-","BGY":"-","BGYR":"-","WV":"-"}},
+ {k:"Acquisitions",c:"#7C3AED",rev:{bud:0,B:0.0,BG:0.0,BGY:1792.5,BGYR:1792.5,WV:0.0},cos:{bud:0,B:0.0,BG:0.0,BGY:-846.1,BGYR:-846.1,WV:0.0},gp:{bud:0,B:0.0,BG:0.0,BGY:946.4,BGYR:946.4,WV:0.0},gpP:{"bud":"-","B":"-","BG":"-","BGY":"53%","BGYR":"53%","WV":"-"},ts:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},con:{bud:0,B:0.0,BG:0.0,BGY:946.4,BGYR:946.4,WV:0.0},opex:{bud:0,B:0.0,BG:0.0,BGY:0.0,BGYR:0.0,WV:0.0},eb:{bud:0,B:0.0,BG:0.0,BGY:946.4,BGYR:946.4,WV:0.0},ebP:{"bud":"-","B":"-","BG":"-","BGY":"53%","BGYR":"53%","WV":"-"}},
 ];
 const COLS=["bud","B","BG","BGY","BGYR","WV"];
 const EKEYS=["rev","cos","gp","ts","con","opex","eb"];
 const WEEKS=["W3","W5","W7","W9","W11","W13","W15","W17","W19","W21","W23","W25","W27","W29","W31","W33","W35","W37","W39","W41","W43","W45","W47","W52"];
-const B26=[44.2,45.3,45.7,47.5,50.6,51.7,52.1,52.1],BG26=[81.6,91.3,91.4,95.5,97.2,96.6,96.6],BUD26=145,BUD25=121;
+const B26=[44.2,45.3,45.7,47.5,50.6,51.7,52.1],BG26=[81.6,91.3,91.4,95.5,97.2,96.6,96.7],BUD26=145,BUD25=121;
 const D26=["23.01","10.02","23.02","9.03","23.03","7.04","17.04","20.04"];
 const B25=[66.1,65.8,76.5,76.6,77.6,78.7,79.3,80.1,84,86.8,88.6,87.3,87.9,88.8,91.6,94,94.4,95.2,98.1,98.4,99,100.3,100.3,114.7];
 const BG25=[79.8,83.1,85.3,88.6,89,89.8,91,91.8,94.7,91.8,102.7,104.9,106.2,108,110.3,111.1,111.8,113.6,116.6,116.9,119,119.8,119.8,130.4];
@@ -598,8 +598,9 @@ const DEALS_DATA={deals:[
   {eco:"Premier",type:"Media Rights",status:"G",name:"EClutch",loc:"",ccy:"EUR",eur:0},
   {eco:"Premier",type:"Media Rights",status:"G",name:"GLB - E-Clutch - Premier 26",loc:"10000",ccy:"EUR",eur:10000},
   {eco:"Premier",type:"Media Rights",status:"G",name:"BG - eSportsBulgaria - Premier 26",loc:"5000",ccy:"EUR",eur:5000},
-  {eco:"Premier",type:"Media Rights",status:"Y",name:"DE - Winamax - Premier 26",loc:"60000",ccy:"EUR",eur:60000},
+  {eco:"Premier",type:"Media Rights",status:"Y",name:"DE - Winamax - Premier 26",loc:"0",ccy:"EUR",eur:0},
   {eco:"Premier",type:"Media Rights",status:"R",name:"GLB - FAST Channel - Premier - Samsung TV",loc:"20000",ccy:"EUR",eur:20000},
+  {eco:"Premier",type:"Media Rights",status:"G",name:"DE - Winamax - Premier 26",loc:"30000",ccy:"EUR",eur:30000},
   {eco:"R6",type:"Media Rights",status:"G",name:"Grid R6 Deal - Ubisoft Rights Share 2026",loc:"44000",ccy:"USD",eur:37543},
   {eco:"R6",type:"Media Rights",status:"G",name:"GLB - E-Clutch - SI Feb 2026",loc:"5000",ccy:"EUR",eur:5000},
   {eco:"R6",type:"Media Rights",status:"G",name:"GLB - E-Clutch",loc:"15000",ccy:"EUR",eur:15000},
@@ -607,7 +608,7 @@ const DEALS_DATA={deals:[
   {eco:"RLCS",type:"Media Rights",status:"G",name:"EU - Eclutch - RLCS 26",loc:"25000",ccy:"EUR",eur:25000},
   {eco:"RLCS",type:"Media Rights",status:"G",name:"BE - RTBF - RLCS 26",loc:"12000",ccy:"EUR",eur:12000},
   {eco:"RLCS",type:"Media Rights",status:"G",name:"MENA - Eclutch - RLCS 26",loc:"15000",ccy:"EUR",eur:15000},
-  {eco:"RLCS",type:"Media Rights",status:"Y",name:"FR - TBC - RLCS 26",loc:"25000",ccy:"EUR",eur:25000},
+  {eco:"RLCS",type:"Media Rights",status:"Y",name:"FR - France TV  Slash  - RLCS 26",loc:"25000",ccy:"EUR",eur:25000},
   {eco:"RLCS",type:"Media Rights",status:"R",name:"Global - FAST - RLCS 26",loc:"50000",ccy:"EUR",eur:50000},
   {eco:"RLCS",type:"Media Rights",status:"Y",name:"USA - TBC - RLCS 26",loc:"0",ccy:"EUR",eur:0},
   {eco:"RLCS",type:"Media Rights",status:"Y",name:"USA - Linear - RLCS 26",loc:"",ccy:"EUR",eur:0},
@@ -684,6 +685,7 @@ const DEALS_DATA={deals:[
   {eco:"RLCS",type:"Publisher Fee",status:"B",name:"RLCS Production Fee 2026 base",loc:"7093058",ccy:"USD",eur:6052097},
   {eco:"RLCS",type:"Publisher Fee",status:"R",name:"RLCS Fort Worth 2026 - Audience Days",loc:"250000",ccy:"EUR",eur:250000},
   {eco:"RLCS",type:"Publisher Fee",status:"R",name:"RLCS Prize Money Payments",loc:"1575000",ccy:"USD",eur:1343857},
+  {eco:"RLCS",type:"Publisher Fee",status:"Y",name:"testkarl",loc:"55000",ccy:"EUR",eur:55000},
   {eco:"Supercell",type:"Publisher Fee",status:"G",name:"Brawl Stars - 2026 - Production Fee",loc:"11100000",ccy:"USD",eur:9470990},
   {eco:"Supercell",type:"Publisher Fee",status:"G",name:"Brawl Stars - Prize Money 2026",loc:"2000000",ccy:"USD",eur:1706485},
   {eco:"Supercell",type:"Publisher Fee",status:"G",name:"Brawl Challengers",loc:"776250",ccy:"USD",eur:662329},
@@ -712,13 +714,10 @@ const DEALS_DATA={deals:[
   {eco:"FNCS",type:"Sponsorship",status:"B",name:"The Milk Cup FNCS 2026",loc:"512600",ccy:"EUR",eur:512600},
   {eco:"FNCS",type:"Sponsorship",status:"R",name:"Goodyear - FNCS 2026",loc:"700000",ccy:"EUR",eur:700000},
   {eco:"FNCS",type:"Sponsorship",status:"B",name:"Epic Games Store - FNCS 2026",loc:"195350",ccy:"USD",eur:166681},
-  {eco:"FNCS",type:"Sponsorship",status:"R",name:"KP Snacks - Chips - FNCS 2026",loc:"390000",ccy:"EUR",eur:390000},
-  {eco:"FNCS",type:"Sponsorship",status:"R",name:"Peripherals FNCS 26",loc:"150000",ccy:"EUR",eur:150000},
   {eco:"FNCS",type:"Sponsorship",status:"R",name:"Visa - FNCS 2026",loc:"2000000",ccy:"USD",eur:1706485},
   {eco:"FNCS",type:"Sponsorship",status:"R",name:"Waymo",loc:"",ccy:"EUR",eur:0},
   {eco:"FNCS",type:"Sponsorship",status:"R",name:"Spectrum - FNCS 2026",loc:"4850000",ccy:"USD",eur:4138225},
   {eco:"FNCS",type:"Sponsorship",status:"R",name:"Current",loc:"",ccy:"EUR",eur:0},
-  {eco:"FNCS",type:"Sponsorship",status:"R",name:"Current - FNCS 2026",loc:"1200000",ccy:"USD",eur:1023891},
   {eco:"FNCS",type:"Sponsorship",status:"R",name:"Earnin",loc:"",ccy:"EUR",eur:0},
   {eco:"FNCS",type:"Sponsorship",status:"R",name:"Earnin",loc:"",ccy:"EUR",eur:0},
   {eco:"FNCS",type:"Sponsorship",status:"Y",name:"Zowie",loc:"",ccy:"EUR",eur:0},
@@ -748,7 +747,7 @@ const DEALS_DATA={deals:[
   {eco:"Premier",type:"Sponsorship",status:"G",name:"Razer - Premier",loc:"150000",ccy:"USD",eur:127986},
   {eco:"Premier",type:"Sponsorship",status:"G",name:"Zowie",loc:"",ccy:"EUR",eur:0},
   {eco:"Premier",type:"Sponsorship",status:"Y",name:"IC Markets",loc:"600000",ccy:"EUR",eur:600000},
-  {eco:"Premier",type:"Sponsorship",status:"R",name:"Hong Kong Broadband Network and China Mobile",loc:"3500000",ccy:"HKD",eur:390625},
+  {eco:"Premier",type:"Sponsorship",status:"R",name:"Hong Kong Broadband Network and China Mobile",loc:"1000000",ccy:"HKD",eur:111607},
   {eco:"Premier",type:"Sponsorship",status:"R",name:"CSL/HKT",loc:"",ccy:"EUR",eur:0},
   {eco:"Premier",type:"Sponsorship",status:"B",name:"Refrag - Premier 2026 (from April)",loc:"98600",ccy:"EUR",eur:98600},
   {eco:"Premier",type:"Sponsorship",status:"R",name:"Tradeify - Premier",loc:"250000",ccy:"USD",eur:213311},
@@ -763,7 +762,6 @@ const DEALS_DATA={deals:[
   {eco:"Premier",type:"Sponsorship",status:"Y",name:"Oracle (Short term work)",loc:"250000",ccy:"EUR",eur:250000},
   {eco:"Premier",type:"Sponsorship",status:"R",name:"Oracle (Short term work)",loc:"200000",ccy:"EUR",eur:200000},
   {eco:"Premier",type:"Sponsorship",status:"R",name:"",loc:"",ccy:"EUR",eur:0},
-  {eco:"Premier",type:"Sponsorship",status:"R",name:"IPVanish",loc:"15000",ccy:"EUR",eur:15000},
   {eco:"Premier",type:"Sponsorship",status:"G",name:"IPVanish",loc:"15000",ccy:"USD",eur:12799},
   {eco:"Premier",type:"Sponsorship",status:"R",name:"Resorts World Sentosa - 2027 Title - Launch 2026",loc:"150000",ccy:"USD",eur:127986},
   {eco:"Premier",type:"Sponsorship",status:"Y",name:"TradeNation",loc:"500000",ccy:"GBP",eur:584454},
@@ -777,13 +775,11 @@ const DEALS_DATA={deals:[
   {eco:"RLCS",type:"Sponsorship",status:"B",name:"Progressive Insurance RLCS 2026",loc:"1860000",ccy:"USD",eur:1587031},
   {eco:"RLCS",type:"Sponsorship",status:"B",name:"License - FifaE RLCS - 2026",loc:"140000",ccy:"USD",eur:119454},
   {eco:"RLCS",type:"Sponsorship",status:"B",name:"La Banque Postal - RLCS 2026",loc:"225000",ccy:"EUR",eur:225000},
-  {eco:"RLCS",type:"Sponsorship",status:"R",name:"KP Snacks - RLCS 26",loc:"390000",ccy:"EUR",eur:390000},
   {eco:"RLCS",type:"Sponsorship",status:"B",name:"Epic Games Store - RLCS 2026",loc:"234375",ccy:"USD",eur:199979},
   {eco:"RLCS",type:"Sponsorship",status:"Y",name:"License - Slash France TV - RLCS 26",loc:"30000",ccy:"EUR",eur:30000},
-  {eco:"RLCS",type:"Sponsorship",status:"R",name:"Automotive - RLCS 26",loc:"335000",ccy:"EUR",eur:335000},
   {eco:"RLCS",type:"Sponsorship",status:"B",name:"Michelin - RLCS 2026",loc:"400000",ccy:"EUR",eur:400000},
   {eco:"RLCS",type:"Sponsorship",status:"R",name:"Nascar - RLCS 2026",loc:"231000",ccy:"USD",eur:197099},
-  {eco:"RLCS",type:"Sponsorship",status:"Y",name:"Nascar - RLCS 2026",loc:"300000",ccy:"EUR",eur:300000},
+  {eco:"RLCS",type:"Sponsorship",status:"Y",name:"Nascar - RLCS 2026",loc:"300000",ccy:"USD",eur:255973},
   {eco:"RLCS",type:"Sponsorship",status:"R",name:"Volvic",loc:"50000",ccy:"EUR",eur:50000},
   {eco:"RLCS",type:"Sponsorship",status:"R",name:"Alienware - Monitors and Computers - RLCS 2026",loc:"400000",ccy:"USD",eur:341297},
   {eco:"RLCS",type:"Sponsorship",status:"G",name:"Midas",loc:"",ccy:"EUR",eur:0},
@@ -861,7 +857,7 @@ const DEALS_DATA={deals:[
   {eco:"Supercell",type:"Ticketing",status:"Y",name:"Ticketing - Berlin",loc:"100000",ccy:"EUR",eur:100000},
   {eco:"Supercell",type:"Ticketing",status:"Y",name:"Ticketing - Japan",loc:"200000",ccy:"EUR",eur:200000},
   {eco:"Supercell",type:"Ticketing",status:"B",name:"Ticketing - Berlin",loc:"65000",ccy:"EUR",eur:65000},
-],ecos:["Premier", "Dota", "Supercell", "FNCS", "RLCS", "R6", "Riot (Studio)", "Riot (New Biz)", "Other Publishers", "New Formats", "Acquisitions", "BLAST TV", ""],types:["BLAST Channels", "Host City", "In-Game", "Media Rights", "Merchandise", "Other Revenue", "Publisher Fee", "Sponsorship", "Ticketing"]};
+],ecos:["Premier", "Dota", "RLCS", "FNCS", "R6", "Riot (Studio)", "Riot (New Biz)", "Supercell", "BLAST TV", "Other Publishers", "New Formats", "Acquisitions"],types:["BLAST Channels", "Host City", "In-Game", "Media Rights", "Merchandise", "Other Revenue", "Publisher Fee", "Sponsorship", "Ticketing"]};
 const ECO_DRILL = {
   "Premier":{"B":{"rev":{"BLAST Channels": 94, "Host City": 150, "Media Rights": 8551, "Sponsorship": 4416, "Ticketing": 984},"ec_event":-12956,"ec_prize":-5709,"ocs":-551},"BG":{"rev":{"BLAST Channels": 103, "Host City": 547, "Media Rights": 8608, "Sponsorship": 4883, "Ticketing": 2456},"ec_event":-12956,"ec_prize":-5709,"ocs":-798},"BGY":{"rev":{"BLAST Channels": 307, "Host City": 2263, "Merchandise": 22, "Media Rights": 8722, "Sponsorship": 9372, "Ticketing": 3480},"ec_event":-12956,"ec_prize":-5709,"ocs":-1291},"BGYR":{"rev":{"BLAST Channels": 307, "Host City": 3321, "Merchandise": 22, "Media Rights": 8842, "Sponsorship": 14321, "Ticketing": 3480},"ec_event":-12956,"ec_prize":-5709,"ocs":-1741}},
   "Dota":{"B":{"rev":{"BLAST Channels": 20, "Media Rights": 4663, "Sponsorship": 1893},"ec_event":-4124,"ec_prize":-3665,"ocs":-107},"BG":{"rev":{"BLAST Channels": 20, "Host City": 50, "Media Rights": 4663, "Sponsorship": 1893},"ec_event":-4124,"ec_prize":-3665,"ocs":-107},"BGY":{"rev":{"BLAST Channels": 80, "Host City": 764, "Merchandise": 4, "Media Rights": 4683, "Sponsorship": 3093, "Ticketing": 110},"ec_event":-4124,"ec_prize":-3665,"ocs":-278},"BGYR":{"rev":{"BLAST Channels": 80, "Host City": 764, "Merchandise": 4, "Media Rights": 4743, "Sponsorship": 5293, "Ticketing": 110},"ec_event":-4124,"ec_prize":-3665,"ocs":-318}},
@@ -898,7 +894,7 @@ const ECO_BUD={
   "Total":{rev:{"Sponsorship":26793,"Media Rights":15680,"Host City":2951,"Publisher Fee":86005,"BLAST Channels":1240,"Ticketing":9019,"Merchandise":56,"In-Game":3250},ec_event:-79680,ec_prize:-16730,rs:-405,other_cos:-2396},
   "Riot (Combined)":{rev:{"Publisher Fee":14924},ec_event:-10860,ec_prize:0,rs:0,other_cos:0},
 };
-var COMMENTARY_TEXT="BGY EBITDA improved +\u20ac0.2m vs 07.04 (\u20ac-11.4m vs \u20ac-11.6m). Key movements: Premier added TradeNation as a new Yellow deal (+\u20ac0.6m), partially offset by Lynx - X Partnership lost (-\u20ac0.3m). Supercell\u2019s Burger King moved Yellow\u2192Red (net -\u20ac0.5m BGY impact). RLCS added Paysafe (+\u20ac0.3m) and Nascar upgraded Red\u2192Yellow (+\u20ac0.3m); Ticketing - Fort Worth deal value updated (+\u20ac0.2m). FNCS: LEGO moved Red\u2192Yellow (-\u20ac0.3m BGY weighting); Paysafe new deal (+\u20ac0.2m). Riot (Studio) reflects several Airtable value corrections across monthly Studio Base deals, netting +\u20ac0.2m. BGY revenue remains \u20ac31.1m behind the \u20ac145m budget.";
+var COMMENTARY_TEXT="BGY EBITDA improved +\u20ac0.3m vs 07.04 (\u20ac-11.3m vs \u20ac-11.6m). Key movements: Premier added TradeNation as a new Yellow deal (+\u20ac0.6m), partially offset by Lynx - X Partnership lost (-\u20ac0.3m). Supercell\u2019s Burger King moved Yellow\u2192Red (net -\u20ac0.5m BGY impact). RLCS added Paysafe (+\u20ac0.3m) and Nascar upgraded Red\u2192Yellow (+\u20ac0.3m); Ticketing - Fort Worth deal value updated (+\u20ac0.2m). FNCS: LEGO moved Red\u2192Yellow (-\u20ac0.3m BGY weighting); Paysafe new deal (+\u20ac0.2m). Riot (Studio) reflects several Airtable value corrections across monthly Studio Base deals, netting +\u20ac0.2m. BGY revenue remains \u20ac31.1m behind the \u20ac145m budget.";
 /* ══════════ END DATA BLOCK ══════════ */
 function generateCommentary(){
   var div=document.getElementById("comm");
