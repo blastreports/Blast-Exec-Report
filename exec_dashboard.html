@@ -102,7 +102,7 @@ footer{padding:8px 20px 18px;font-size:10px;color:var(--t3);display:flex;justify
   <div class="pane" id="pane-bridge">
     <div class="card"><div class="ch">EBITDA Bridge <small id="br-sub"></small></div><div class="cx"><table class="brt" id="t-br"></table></div></div>
   
-    <div class="card"><div class="ch" style="display:flex;align-items:center;justify-content:space-between">Commentary<span id="comm-hint" style="font-size:10px;color:var(--t3);font-weight:400;font-style:italic">click to edit</span></div><div class="comm" id="comm" contenteditable="true" style="outline:none;cursor:text;min-height:40px;border-radius:0 0 8px 8px;transition:background .15s" spellcheck="false"></div></div>
+    <div class="card"><div class="ch" style="display:flex;align-items:center;justify-content:space-between">Commentary<span id="comm-hint" style="font-size:10px;color:var(--t3);font-weight:400;font-style:italic">click to edit</span><button onclick="(function(){var h=document.documentElement.outerHTML;var txt=document.getElementById('comm').innerText||document.getElementById('comm').textContent;h=h.replace(/var COMMENTARY_TEXT=.+?;/,'var COMMENTARY_TEXT='+JSON.stringify(txt)+';');var b=new Blob([h],{type:'text/html'});var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='exec_dashboard.html';a.click();})()" style="border:none;background:#0F172A;color:#fff;cursor:pointer;font-size:10px;padding:3px 8px;border-radius:4px;margin-left:8px">↓ Save HTML</button></div><div class="comm" id="comm" contenteditable="true" style="outline:none;cursor:text;min-height:40px;border-radius:0 0 8px 8px;transition:background .15s" spellcheck="false"></div></div>
   
     
   </div>
@@ -246,8 +246,8 @@ const ECOS_RAW=[
 const COLS=["bud","B","BG","BGY","BGYR","WV"];
 const EKEYS=["rev","cos","gp","ts","con","opex","eb"];
 const WEEKS=["W3","W5","W7","W9","W11","W13","W15","W17","W19","W21","W23","W25","W27","W29","W31","W33","W35","W37","W39","W41","W43","W45","W47","W52"];
-const B26=[44.2,45.3,45.7,47.5,50.6,51.7,52.1,52.5],BG26=[81.6,91.3,91.4,95.5,97.2,96.6,97.3],BUD26=145,BUD25=121;
-const D26=["23.01","10.02","23.02","9.03","23.03","7.04","17.04","20.04"];
+const B26=[44.2,45.3,45.7,47.5,50.6,51.7,52.5],BG26=[81.6,91.3,91.4,95.5,97.2,96.6,97.3],BUD26=145,BUD25=121;
+const D26=["23.01","10.02","23.02","9.03","23.03","7.04","20.04"];
 const B25=[66.1,65.8,76.5,76.6,77.6,78.7,79.3,80.1,84,86.8,88.6,87.3,87.9,88.8,91.6,94,94.4,95.2,98.1,98.4,99,100.3,100.3,114.7];
 const BG25=[79.8,83.1,85.3,88.6,89,89.8,91,91.8,94.7,91.8,102.7,104.9,106.2,108,110.3,111.1,111.8,113.6,116.6,116.9,119,119.8,119.8,130.4];
 const D25=["27.01","10.02","24.02","10.03","24.03","14.04","28.04","12.05","27.05","9.06","23.06","7.07","21.07","4.08","18.08","1.09","15.09","29.09","13.10","27.10","10.11","24.11","8.12","19.12"];
@@ -2249,7 +2249,62 @@ function initDealsTab(deals,ecos,types){
 
 
 kpis();buildPL();buildRev();buildCos();buildBridge();buildEBTable();buildEcoGrid();buildYoy();buildYoyTable();
-var _ce=document.getElementById("comm");if(_ce&&COMMENTARY_TEXT)_ce.textContent=COMMENTARY_TEXT;
+var _ce=document.getElementById("comm");
+if(_ce&&COMMENTARY_TEXT){
+  function _fmtComm(txt){
+    if(!txt)return"";
+    txt=txt.trim().replace(/\.+$/,"");
+    var parts=txt.split(/\. (?=[A-Z])/);
+    parts=parts.map(function(p){return p.trim().replace(/\.+$/,"");}).filter(Boolean);
+    if(parts.length<=1)return'<p style="margin:0;padding:2px 0;line-height:1.7">'+txt+'.</p>';
+    return parts.map(function(p){
+      return'<p style="margin:0;padding:2px 0 2px 16px;position:relative;line-height:1.7">'
+        +'<span style="position:absolute;left:0;color:#94A3B8">•</span>'+p+'.</p>';
+    }).join("");
+  }
+  // Always render COMMENTARY_TEXT as bullets — localStorage only stores user edits
+  var _userEdit=null;
+  try{_userEdit=localStorage.getItem("blast_commentary_v2");}catch(e){}
+  // Only use saved value if it looks like it has multiple sentences
+  var _src=(_userEdit&&_userEdit.indexOf(". ")>0)?_userEdit:COMMENTARY_TEXT;
+  _ce.innerHTML=_fmtComm(_src);
+  _ce.addEventListener("focus",function(){
+    _ce.style.background="rgba(241,245,249,.7)";
+    var h=document.getElementById("comm-hint");if(h)h.style.display="none";
+    // Extract sentences from <p> tags
+    var ps=_ce.querySelectorAll("p");
+    var plain="";
+    if(ps.length>1){
+      var arr=[];
+      ps.forEach(function(p){
+        var t=(p.innerText||p.textContent).trim().replace(/\.+$/,"");
+        if(t)arr.push(t);
+      });
+      plain=arr.join(". ")+".";
+    } else {
+      plain=(_ce.innerText||_ce.textContent||"").trim();
+    }
+    _ce.innerHTML="";
+    _ce.textContent=plain;
+  });
+  _ce.addEventListener("blur",function(){
+    _ce.style.background="";
+    var h=document.getElementById("comm-hint");if(h)h.style.display="";
+    var txt=(_ce.innerText||_ce.textContent||"").trim();
+    if(txt&&txt!==COMMENTARY_TEXT){
+      try{localStorage.setItem("blast_commentary_v2",txt);}catch(e){}
+    }
+    _ce.innerHTML=_fmtComm(txt||COMMENTARY_TEXT);
+  });
+  _ce.addEventListener("keydown",function(ev){
+    if(ev.key==="Escape"){ev.preventDefault();_ce.blur();}
+    if((ev.metaKey||ev.ctrlKey)&&ev.shiftKey&&ev.key==="z"){
+      ev.preventDefault();
+      try{localStorage.removeItem("blast_commentary_v2");}catch(e){}
+      _ce.innerHTML=_fmtComm(COMMENTARY_TEXT);
+    }
+  });
+}
 initDealsTab(DEALS_DATA.deals,DEALS_DATA.ecos,DEALS_DATA.types);
 </script>
 </body>
