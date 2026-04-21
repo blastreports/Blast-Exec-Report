@@ -1672,7 +1672,15 @@ function wfDrill(canvasId, key, groupFn) {
     var eco=ECOS_RAW.find(function(e){return e.k===it.e;}); return(eco&&eco.c)||"#64748B";
   }
 
-  var revItems = allItems.filter(function(b){ return !b.lnk; })
+  // Only show rev items that have movement in current scenario (or linked CoS does)
+  var _cosMapSC = {};
+  allItems.filter(function(c){return c.lnk&&c.dep;}).forEach(function(c){
+    if(c[SC]&&c[SC]!==0) _cosMapSC[c.dep] = true;
+  });
+  var revItems = allItems.filter(function(b){
+    if(b.lnk) return false;
+    return (b[SC]&&b[SC]!==0) || _cosMapSC[b.lid];
+  })
     .sort(function(a,b){
       var ga=groupByType?TYPE_ORD.indexOf(a.t):ECO_ORD.indexOf(a.e);
       var gb=groupByType?TYPE_ORD.indexOf(b.t):ECO_ORD.indexOf(b.e);
@@ -1683,8 +1691,13 @@ function wfDrill(canvasId, key, groupFn) {
       return Math.abs((b[SC]||0)+(_cosMap[b.lid]||0))-Math.abs((a[SC]||0)+(_cosMap[a.lid]||0));
     });
 
+  // Totals based on visible items only
   var totRev = revItems.reduce(function(a,b){return a+(b[SC]||0);},0);
-  var totCos = cosItems.reduce(function(a,b){return a+(b[SC]||0);},0);
+  var visCosLids = new Set();
+  revItems.forEach(function(it){
+    cosItems.filter(function(c){return(it.lid&&c.dep===it.lid)||(!c.dep&&it.lid&&c.lid&&c.lid.indexOf(it.lid)===0);}).forEach(function(c){visCosLids.add(c.lid);});
+  });
+  var totCos = cosItems.filter(function(c){return visCosLids.has(c.lid);}).reduce(function(a,b){return a+(b[SC]||0);},0);
   var totNet = +(totRev+totCos).toFixed(3);
 
   titleEl.innerHTML =
@@ -1739,11 +1752,15 @@ function wfDrill(canvasId, key, groupFn) {
         "</td>" +
         "<td style='padding:9px 12px;text-align:right;width:90px'>"+fmV(revVal)+"</td>" +
         "<td style='padding:9px 12px;text-align:right;width:90px'>"+(linked.length?fmV(cosVal):"<span style='color:#94A3B8'>—</span>")+"</td>" +
-        "<td style='padding:9px 12px;text-align:right;width:90px'><span style='font-weight:700;color:"+(net>=0?"#1D9E75":"#DC2626")+"'>"+(net>=0?"+":"")+fmCoS(net)+"</span></td>" +
+        "<td style='padding:9px 12px;text-align:right;width:90px'>" +
+        (Math.abs(net)>=0.001
+          ? "<span style='font-weight:700;color:"+(net>=0?"#1D9E75":"#DC2626")+"'>"+(net>=0?"+":"")+fmCoS(net)+"</span>"
+          : "<span style='color:#94A3B8'>—</span>") +
+        "</td>" +
       "</tr>";
 
     linked.forEach(function(c){
-      var cv=c[SC]||0; if(!cv)return;
+      var cv=c[SC]||0; if(Math.abs(cv)<0.001)return;
       rows+=
         "<tr style='border-bottom:1px solid #F8FAFC;background:#FAFAFA'>" +
           "<td style='padding:5px 12px 5px 28px'>" +
@@ -1756,11 +1773,42 @@ function wfDrill(canvasId, key, groupFn) {
     });
   });
 
-  // Unlinked CoS
-  cosItems.forEach(function(c,ci){
-    if(usedCos.has(ci))return; var cv=c[SC]||0;
-    rows+="<tr style='border-bottom:1px solid #F8FAFC;background:#FFF7ED'><td style='padding:8px 12px'><div style='font-size:11px;color:#B45309;font-style:italic'>"+(c.st||c.t)+" · "+(c.n||"")+"</div><div style='font-size:10px;color:#94A3B8'>"+(c.l||"")+"</div></td><td></td><td style='padding:8px 12px;text-align:right'>"+fmV(cv)+"</td><td style='padding:8px 12px;text-align:right'>"+fmV(cv)+"</td></tr>";
+  // Unlinked CoS — collect those with SC value, show as a group
+  var unlinkedCos = cosItems.filter(function(c,ci){
+    if(usedCos.has(ci)) return false;
+    return Math.abs(c[SC]||0) >= 0.001;  // only if has movement
   });
+  if(unlinkedCos.length) {
+    var unlNet = unlinkedCos.reduce(function(a,c){return a+(c[SC]||0);},0);
+    // Group header
+    rows +=
+      "<tr style='background:#FFF7ED;border-top:1px solid #FED7AA'>" +
+        "<td style='padding:7px 12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#B45309'>" +
+          "<span style='display:inline-block;width:8px;height:8px;border-radius:2px;background:#B45309;margin-right:6px;vertical-align:middle'></span>" +
+          "Other CoS movements" +
+        "</td>" +
+        "<td style='padding:7px 12px;text-align:right;font-size:10px;color:#94A3B8'>" + unlinkedCos.length + " item" + (unlinkedCos.length===1?"":"s") + "</td>" +
+        "<td></td>" +
+        "<td style='padding:7px 12px;text-align:right;font-size:11px;font-weight:700;color:"+(unlNet>=0?"#1D9E75":"#DC2626")+"'>"+(unlNet>=0?"+":"")+unlNet.toFixed(1)+"m</td>" +
+      "</tr>";
+    // Individual sub-rows
+    unlinkedCos.sort(function(a,b){return Math.abs(b[SC]||0)-Math.abs(a[SC]||0);})
+    .forEach(function(c){
+      var cv=c[SC]||0;
+      rows +=
+        "<tr style='border-bottom:1px solid #FEF3C7;background:#FFFBF5'>" +
+          "<td style='padding:5px 12px 5px 28px'>" +
+            "<span style='display:inline-block;width:2px;height:12px;background:#B45309;opacity:.4;border-radius:1px;vertical-align:middle;margin-right:6px'></span>" +
+            "<span style='font-size:10.5px;color:#B45309;font-style:italic'>"+(c.st||c.t)+"</span>" +
+            (c.n ? "<span style='font-size:9.5px;color:#94A3B8;margin-left:4px'>· "+c.n+"</span>" : "") +
+            "<div style='font-size:9.5px;color:#94A3B8;margin-top:1px;margin-left:18px'>"+(c.l||"")+"</div>" +
+          "</td>" +
+          "<td></td>" +
+          "<td style='padding:5px 12px;text-align:right'>" + fmV(cv) + "</td>" +
+          "<td style='padding:5px 12px;text-align:right'>" + fmV(cv) + "</td>" +
+        "</tr>";
+    });
+  }
 
   rows+=
     "<tr style='background:#F8FAFC;border-top:2px solid #E2E8F0'>" +
