@@ -958,7 +958,7 @@ function kpis(){
   if(kw2t)kw2t.innerHTML="<span class='"+clsV(wEb-wEbPrv)+"'>"+(wEb-wEbPrv>=0?"+":"")+((wEb-wEbPrv).toFixed(1))+"m vs "+PRV_D+"</span>";
   // WV vs BGY deltas
   var kvw3r=document.getElementById("kvw3r"),kvw3g=document.getElementById("kvw3g"),kvw3e=document.getElementById("kvw3e");
-  var dWr=+(wRev-CUR.rev.BGY).toFixed(1),dWg=+(wGm-CUR.gm.BGY).toFixed(1),dWe=+(wEb-CUR.eb.BGY).toFixed(1);
+  var dWr=+(wRev-BUD_R).toFixed(1),dWg=+(wGm-BUD_GM).toFixed(1),dWe=+(wEb-BUD_E).toFixed(1);
   if(kvw3r){kvw3r.textContent=(dWr>=0?"+":"")+dWr+"m";kvw3r.className=clsV(dWr);}
   if(kvw3g){kvw3g.textContent=(dWg>=0?"+":"")+dWg+"m";kvw3g.className=clsV(dWg);}
   if(kvw3e){kvw3e.textContent=(dWe>=0?"+":"")+dWe+"m";kvw3e.className=clsV(dWe);}
