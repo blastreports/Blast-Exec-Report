@@ -861,22 +861,90 @@ const DEALS_DATA={deals:[
   {eco:"Supercell",type:"Ticketing",status:"B",name:"Ticketing - Berlin",loc:"150000",ccy:"EUR",eur:150000},
 ],ecos:["Premier", "Dota", "RLCS", "FNCS", "R6", "Riot (Studio)", "Riot (New Biz)", "Supercell", "BLAST TV", "Other Publishers", "New Formats", "Acquisitions"],types:["BLAST Channels", "Host City", "In-Game", "Media Rights", "Merchandise", "Other Revenue", "Publisher Fee", "Sponsorship", "Ticketing"]};
 const ECO_DRILL = {
-  "Premier":{"B":{"rev":{"BLAST Channels": 94, "Host City": 150, "Media Rights": 8551, "Sponsorship": 4416, "Ticketing": 1368},"ec_event":-12956,"ec_prize":-5709,"ocs":-557},"BG":{"rev":{"BLAST Channels": 103, "Host City": 547, "Media Rights": 8608, "Sponsorship": 4883, "Ticketing": 2840},"ec_event":-12956,"ec_prize":-5709,"ocs":-776},"BGY":{"rev":{"BLAST Channels": 307, "Host City": 2513, "Merchandise": 22, "Media Rights": 8722, "Sponsorship": 9372, "Ticketing": 3592},"ec_event":-12956,"ec_prize":-5709,"ocs":-1578},"BGYR":{"rev":{"BLAST Channels": 307, "Host City": 3571, "Merchandise": 22, "Media Rights": 8842, "Sponsorship": 14321, "Ticketing": 3592},"ec_event":-12956,"ec_prize":-5709,"ocs":-2028}},
-  "Dota":{"B":{"rev":{"BLAST Channels": 20, "Media Rights": 4663, "Sponsorship": 1893},"ec_event":-4124,"ec_prize":-3665,"ocs":-107},"BG":{"rev":{"BLAST Channels": 20, "Host City": 50, "Media Rights": 4663, "Sponsorship": 1893},"ec_event":-4124,"ec_prize":-3665,"ocs":-107},"BGY":{"rev":{"BLAST Channels": 80, "Host City": 764, "Merchandise": 4, "Media Rights": 4683, "Sponsorship": 3093, "Ticketing": 110},"ec_event":-4124,"ec_prize":-3665,"ocs":-278},"BGYR":{"rev":{"BLAST Channels": 80, "Host City": 764, "Merchandise": 4, "Media Rights": 4743, "Sponsorship": 5293, "Ticketing": 110},"ec_event":-4124,"ec_prize":-3665,"ocs":-318}},
-  "RLCS":{"B":{"rev":{"BLAST Channels": 58, "Publisher Fee": 7119, "Sponsorship": 3144, "Ticketing": 2332},"ec_event":-12047,"ec_prize":0,"ocs":-534},"BG":{"rev":{"BLAST Channels": 58, "Host City": 332, "Media Rights": 52, "Publisher Fee": 7119, "Sponsorship": 3208, "Ticketing": 2631},"ec_event":-12047,"ec_prize":0,"ocs":-548},"BGY":{"rev":{"BLAST Channels": 225, "Host City": 460, "Merchandise": 12, "Media Rights": 87, "Publisher Fee": 7119, "Sponsorship": 3999, "Ticketing": 2972},"ec_event":-12047,"ec_prize":0,"ocs":-609},"BGYR":{"rev":{"BLAST Channels": 225, "Host City": 724, "Merchandise": 12, "Media Rights": 137, "Publisher Fee": 9713, "Sponsorship": 7326, "Ticketing": 3228},"ec_event":-13059,"ec_prize":-1277,"ocs":-760}},
-  "FNCS":{"B":{"rev":{"Publisher Fee": 8881, "Sponsorship": 873},"ec_event":-8364,"ec_prize":0,"ocs":-82},"BG":{"rev":{"In-Game": 128, "Media Rights": 18, "Publisher Fee": 8881, "Sponsorship": 873, "Ticketing": 584},"ec_event":-8364,"ec_prize":0,"ocs":-137},"BGY":{"rev":{"BLAST Channels": 75, "In-Game": 192, "Merchandise": 8, "Media Rights": 73, "Publisher Fee": 8881, "Sponsorship": 1048, "Ticketing": 909},"ec_event":-8364,"ec_prize":0,"ocs":-150},"BGYR":{"rev":{"BLAST Channels": 75, "Host City": 167, "In-Game": 256, "Merchandise": 8, "Media Rights": 73, "Publisher Fee": 12569, "Sponsorship": 11469, "Ticketing": 909},"ec_event":-9164,"ec_prize":-2553,"ocs":-738}},
-  "R6":{"B":{"rev":{"Publisher Fee": 5697, "Ticketing": 434},"ec_event":-16100,"ec_prize":-5272,"ocs":-229},"BG":{"rev":{"In-Game": 1599, "Media Rights": 58, "Publisher Fee": 21697, "Sponsorship": 167, "Ticketing": 434},"ec_event":-16100,"ec_prize":-5272,"ocs":-382},"BGY":{"rev":{"BLAST Channels": 40, "In-Game": 2424, "Merchandise": 8, "Media Rights": 58, "Publisher Fee": 22897, "Sponsorship": 167, "Ticketing": 434},"ec_event":-17120,"ec_prize":-5272,"ocs":-386},"BGYR":{"rev":{"BLAST Channels": 40, "In-Game": 3249, "Merchandise": 8, "Media Rights": 58, "Publisher Fee": 22897, "Sponsorship": 167, "Ticketing": 434},"ec_event":-17120,"ec_prize":-5272,"ocs":-386}},
-  "Riot (Studio)":{"B":{"rev":{"Publisher Fee": 2631},"ec_event":-1994,"ec_prize":0,"ocs":0},"BG":{"rev":{"Publisher Fee": 10922},"ec_event":-8757,"ec_prize":0,"ocs":0},"BGY":{"rev":{"Publisher Fee": 11822},"ec_event":-9540,"ec_prize":0,"ocs":0},"BGYR":{"rev":{"Publisher Fee": 12822},"ec_event":-9975,"ec_prize":0,"ocs":0}},
-  "Riot (New Biz)":{"B":{"rev":{},"ec_event":0,"ec_prize":0,"ocs":0},"BG":{"rev":{"Publisher Fee": 2520},"ec_event":-1170,"ec_prize":0,"ocs":0},"BGY":{"rev":{"Publisher Fee": 2520},"ec_event":-1170,"ec_prize":0,"ocs":0},"BGYR":{"rev":{"Publisher Fee": 4823},"ec_event":-3128,"ec_prize":0,"ocs":0}},
-  "Supercell":{"B":{"rev":{"Ticketing": 150},"ec_event":0,"ec_prize":0,"ocs":0},"BG":{"rev":{"Publisher Fee": 12026, "Ticketing": 150},"ec_event":-6949,"ec_prize":-1709,"ocs":0},"BGY":{"rev":{"Publisher Fee": 12239, "Sponsorship": 50, "Ticketing": 400},"ec_event":-7130,"ec_prize":-1709,"ocs":-9},"BGYR":{"rev":{"Host City": 250, "Publisher Fee": 12282, "Sponsorship": 593, "Ticketing": 400},"ec_event":-7167,"ec_prize":-1709,"ocs":-160}},
-  "Wimbledon":{"B":{"rev":{},"ec_event":0,"ec_prize":0,"ocs":0},"BG":{"rev":{},"ec_event":0,"ec_prize":0,"ocs":0},"BGY":{"rev":{},"ec_event":0,"ec_prize":0,"ocs":0},"BGYR":{"rev":{},"ec_event":0,"ec_prize":0,"ocs":0}},
-  "BLAST TV":{"B":{"rev":{"Sponsorship": 49},"ec_event":0,"ec_prize":0,"ocs":-201},"BG":{"rev":{"Sponsorship": 49},"ec_event":0,"ec_prize":0,"ocs":-201},"BGY":{"rev":{"Sponsorship": 49},"ec_event":0,"ec_prize":0,"ocs":-201},"BGYR":{"rev":{"BLAST Channels": 1200, "Sponsorship": 49},"ec_event":0,"ec_prize":0,"ocs":-201}},
-  "Other Publishers":{"B":{"rev":{},"ec_event":0,"ec_prize":0,"ocs":0},"BG":{"rev":{"Publisher Fee": 175},"ec_event":-117,"ec_prize":0,"ocs":0},"BGY":{"rev":{"Publisher Fee": 175},"ec_event":-117,"ec_prize":0,"ocs":0},"BGYR":{"rev":{"Publisher Fee": 3632, "Sponsorship": 2500},"ec_event":-2366,"ec_prize":0,"ocs":0}},
-  "New Formats":{"B":{"rev":{},"ec_event":0,"ec_prize":0,"ocs":0},"BG":{"rev":{},"ec_event":0,"ec_prize":0,"ocs":0},"BGY":{"rev":{},"ec_event":0,"ec_prize":0,"ocs":0},"BGYR":{"rev":{"Publisher Fee": 7891},"ec_event":-6709,"ec_prize":0,"ocs":0}},
-  "Corporate":{"B":{"rev":{},"ec_event":0,"ec_prize":0,"ocs":0},"BG":{"rev":{},"ec_event":0,"ec_prize":0,"ocs":0},"BGY":{"rev":{},"ec_event":0,"ec_prize":0,"ocs":0},"BGYR":{"rev":{},"ec_event":0,"ec_prize":0,"ocs":0}},
-  "Acquisitions":{"B":{"rev":{},"ec_event":0,"ec_prize":0,"ocs":0},"BG":{"rev":{},"ec_event":0,"ec_prize":0,"ocs":0},"BGY":{"rev":{"Other Revenue": 1792},"ec_event":0,"ec_prize":0,"ocs":-846},"BGYR":{"rev":{"Other Revenue": 1792},"ec_event":0,"ec_prize":0,"ocs":-846}},
-  "Total":{"B":{"rev":{"BLAST Channels": 172, "Host City": 150, "Media Rights": 13214, "Publisher Fee": 24328, "Sponsorship": 10375, "Ticketing": 4284},"ec_event":-55585,"ec_prize":-14646,"ocs":-1710},"BG":{"rev":{"BLAST Channels": 181, "Host City": 929, "In-Game": 1727, "Media Rights": 13399, "Publisher Fee": 63340, "Sponsorship": 11073, "Ticketing": 6639},"ec_event":-70584,"ec_prize":-16356,"ocs":-2151},"BGY":{"rev":{"BLAST Channels": 727, "Host City": 3737, "In-Game": 2616, "Merchandise": 54, "Media Rights": 13623, "Other Revenue": 1792, "Publisher Fee": 65653, "Sponsorship": 17778, "Ticketing": 8417},"ec_event":-72568,"ec_prize":-16356,"ocs":-4057},"BGYR":{"rev":{"BLAST Channels": 1927, "Host City": 5476, "In-Game": 3505, "Merchandise": 54, "Media Rights": 13853, "Other Revenue": 1792, "Publisher Fee": 86629, "Sponsorship": 41718, "Ticketing": 8673},"ec_event":-85766,"ec_prize":-20186,"ocs":-5436}},
-  "Riot (Combined)":{"B":{"rev":{"Publisher Fee": 2631},"ec_event":-1994,"ec_prize":0,"ocs":0},"BG":{"rev":{"Publisher Fee": 13442},"ec_event":-9927,"ec_prize":0,"ocs":0},"BGY":{"rev":{"Publisher Fee": 14342},"ec_event":-10710,"ec_prize":0,"ocs":0},"BGYR":{"rev":{"Publisher Fee": 17645},"ec_event":-13103,"ec_prize":0,"ocs":0}}
+  "Premier":{
+    "B":{"rev":{"BLAST Channels": 94713, "Host City": 150000, "Media Rights": 8551608, "Sponsorship": 4415418, "Ticketing": 1367512},"ec_event":-12955924,"ec_prize":-5709402,"rs":0,"pa":-235009,"ac":-287700,"tc":0,"oc":-33950,"ocs":-556659},
+    "BG":{"rev":{"BLAST Channels": 106233, "Host City": 547440, "Media Rights": 8608608, "Sponsorship": 4881203, "Ticketing": 2839387},"ec_event":-12955924,"ec_prize":-5709402,"rs":0,"pa":-337648,"ac":-404809,"tc":0,"oc":-33950,"ocs":-776407},
+    "BGY":{"rev":{"BLAST Channels": 309536, "Host City": 2513511, "Merchandise": 22500, "Media Rights": 8722608, "Sponsorship": 9370724, "Ticketing": 3591016},"ec_event":-12955924,"ec_prize":-5709402,"rs":0,"pa":-426232,"ac":-755781,"tc":-250,"oc":-395754,"ocs":-1578017},
+    "BGYR":{"rev":{"BLAST Channels": 309536, "Host City": 3571547, "Merchandise": 22500, "Media Rights": 8842608, "Sponsorship": 14320231, "Ticketing": 3591016},"ec_event":-12955924,"ec_prize":-5709402,"rs":0,"pa":-485546,"ac":-1041726,"tc":-250,"oc":-500163,"ocs":-2027685},
+  },
+  "Dota":{
+    "B":{"rev":{"BLAST Channels": 20655, "Media Rights": 4662662, "Sponsorship": 1892886},"ec_event":-4123556,"ec_prize":-3664956,"rs":0,"pa":-86893,"ac":0,"tc":0,"oc":-20000,"ocs":-106893},
+    "BG":{"rev":{"BLAST Channels": 20655, "Host City": 50000, "Media Rights": 4662662, "Sponsorship": 1892886},"ec_event":-4123556,"ec_prize":-3664956,"rs":0,"pa":-86893,"ac":0,"tc":0,"oc":-20000,"ocs":-106893},
+    "BGY":{"rev":{"BLAST Channels": 80077, "Host City": 764251, "Merchandise": 4500, "Media Rights": 4682662, "Sponsorship": 3092886, "Ticketing": 110000},"ec_event":-4123556,"ec_prize":-3664956,"rs":0,"pa":-114857,"ac":-143246,"tc":0,"oc":-20000,"ocs":-278103},
+    "BGYR":{"rev":{"BLAST Channels": 80077, "Host City": 764251, "Merchandise": 4500, "Media Rights": 4742662, "Sponsorship": 5292886, "Ticketing": 110000},"ec_event":-4123556,"ec_prize":-3664956,"rs":0,"pa":-154357,"ac":-143246,"tc":0,"oc":-20000,"ocs":-317603},
+  },
+  "RLCS":{
+    "B":{"rev":{"BLAST Channels": 57500, "Publisher Fee": 7118650, "Sponsorship": 3144317, "Ticketing": 2331900},"ec_event":-12046820,"ec_prize":0,"rs":0,"pa":-82142,"ac":-251708,"tc":0,"oc":-200000,"ocs":-533850},
+    "BG":{"rev":{"BLAST Channels": 57500, "Host City": 332764, "Media Rights": 52000, "Publisher Fee": 7118650, "Sponsorship": 3208310, "Ticketing": 2630535},"ec_event":-12046820,"ec_prize":0,"rs":0,"pa":-91614,"ac":-251708,"tc":0,"oc":-204266,"ocs":-547588},
+    "BGY":{"rev":{"BLAST Channels": 225100, "Host City": 460750, "Merchandise": 12000, "Media Rights": 87000, "Publisher Fee": 7118650, "Sponsorship": 3999821, "Ticketing": 2971832},"ec_event":-12046820,"ec_prize":0,"rs":0,"pa":-108606,"ac":-296503,"tc":0,"oc":-204266,"ocs":-609375},
+    "BGYR":{"rev":{"BLAST Channels": 225100, "Host City": 724060, "Merchandise": 12000, "Media Rights": 137000, "Publisher Fee": 9712507, "Sponsorship": 7326783, "Ticketing": 3227805},"ec_event":-13059320,"ec_prize":-1276664,"rs":0,"pa":-148760,"ac":-397382,"tc":0,"oc":-214266,"ocs":-760408},
+  },
+  "FNCS":{
+    "B":{"rev":{"Publisher Fee": 8880496, "Sponsorship": 872167},"ec_event":-8363834,"ec_prize":0,"rs":0,"pa":-82283,"ac":0,"tc":0,"oc":0,"ocs":-82283},
+    "BG":{"rev":{"In-Game": 127986, "Media Rights": 18100, "Publisher Fee": 8880496, "Sponsorship": 872167, "Ticketing": 583781},"ec_event":-8363834,"ec_prize":0,"rs":0,"pa":-111515,"ac":-25725,"tc":0,"oc":0,"ocs":-137240},
+    "BGY":{"rev":{"BLAST Channels": 75000, "In-Game": 191979, "Merchandise": 7500, "Media Rights": 73100, "Publisher Fee": 8880496, "Sponsorship": 1047503, "Ticketing": 909117},"ec_event":-8363834,"ec_prize":0,"rs":0,"pa":-114145,"ac":-36225,"tc":0,"oc":0,"ocs":-150370},
+    "BGYR":{"rev":{"BLAST Channels": 75000, "Host City": 166891, "In-Game": 255972, "Merchandise": 7500, "Media Rights": 73100, "Publisher Fee": 12568209, "Sponsorship": 11469858, "Ticketing": 909117},"ec_event":-9163834,"ec_prize":-2553328,"rs":0,"pa":-232083,"ac":-249596,"tc":0,"oc":-255973,"ocs":-737652},
+  },
+  "R6":{
+    "B":{"rev":{"Publisher Fee": 5697484, "Ticketing": 434097},"ec_event":-16099996,"ec_prize":-5272057,"rs":-222692,"pa":-6511,"ac":0,"tc":0,"oc":0,"ocs":-229203},
+    "BG":{"rev":{"In-Game": 1600000, "Media Rights": 57543, "Publisher Fee": 21697484, "Sponsorship": 167022, "Ticketing": 434097},"ec_event":-16099996,"ec_prize":-5272057,"rs":-253953,"pa":-9241,"ac":-105224,"tc":0,"oc":-13500,"ocs":-381918},
+    "BGY":{"rev":{"BLAST Channels": 40000, "In-Game": 2425000, "Merchandise": 7500, "Media Rights": 57543, "Publisher Fee": 22897484, "Sponsorship": 167022, "Ticketing": 434097},"ec_event":-17119996,"ec_prize":-5272057,"rs":-258003,"pa":-9241,"ac":-105224,"tc":0,"oc":-13500,"ocs":-385968},
+    "BGYR":{"rev":{"BLAST Channels": 40000, "In-Game": 3250000, "Merchandise": 7500, "Media Rights": 57543, "Publisher Fee": 22897484, "Sponsorship": 167022, "Ticketing": 434097},"ec_event":-17119996,"ec_prize":-5272057,"rs":-258003,"pa":-9241,"ac":-105224,"tc":0,"oc":-13500,"ocs":-385968},
+  },
+  "Riot (Studio)":{
+    "B":{"rev":{"Publisher Fee": 2631667},"ec_event":-1994493,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BG":{"rev":{"Publisher Fee": 10923890},"ec_event":-8757297,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BGY":{"rev":{"Publisher Fee": 11823890},"ec_event":-9539906,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BGYR":{"rev":{"Publisher Fee": 12823890},"ec_event":-9974689,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+  },
+  "Riot (New Biz)":{
+    "B":{"rev":{},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BG":{"rev":{"Publisher Fee": 2520300},"ec_event":-1169827,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BGY":{"rev":{"Publisher Fee": 2520300},"ec_event":-1169827,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BGYR":{"rev":{"Publisher Fee": 4824055},"ec_event":-3128018,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+  },
+  "Supercell":{
+    "B":{"rev":{"Ticketing": 150000},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BG":{"rev":{"Publisher Fee": 12026627, "Ticketing": 150000},"ec_event":-6949065,"ec_prize":-1709401,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BGY":{"rev":{"Publisher Fee": 12239938, "Sponsorship": 50000, "Ticketing": 400000},"ec_event":-7130379,"ec_prize":-1709401,"rs":0,"pa":-750,"ac":-7875,"tc":0,"oc":0,"ocs":-8625},
+    "BGYR":{"rev":{"Host City": 250000, "Publisher Fee": 12282600, "Sponsorship": 592662, "Ticketing": 400000},"ec_event":-7166642,"ec_prize":-1709401,"rs":0,"pa":-136390,"ac":-23625,"tc":0,"oc":0,"ocs":-160015},
+  },
+  "Wimbledon":{
+    "B":{"rev":{},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BG":{"rev":{},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BGY":{"rev":{},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BGYR":{"rev":{},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+  },
+  "BLAST TV":{
+    "B":{"rev":{"BLAST Channels": 1, "Sponsorship": 48750},"ec_event":0,"ec_prize":0,"rs":0,"pa":-731,"ac":0,"tc":0,"oc":-200000,"ocs":-200731},
+    "BG":{"rev":{"BLAST Channels": 4901, "Sponsorship": 48750},"ec_event":0,"ec_prize":0,"rs":0,"pa":-731,"ac":0,"tc":0,"oc":-200000,"ocs":-200731},
+    "BGY":{"rev":{"BLAST Channels": 9801, "Sponsorship": 48750},"ec_event":0,"ec_prize":0,"rs":0,"pa":-731,"ac":0,"tc":0,"oc":-200000,"ocs":-200731},
+    "BGYR":{"rev":{"BLAST Channels": 1209801, "Sponsorship": 48750},"ec_event":0,"ec_prize":0,"rs":0,"pa":-731,"ac":0,"tc":0,"oc":-200000,"ocs":-200731},
+  },
+  "Other Publishers":{
+    "B":{"rev":{},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BG":{"rev":{"Publisher Fee": 175336},"ec_event":-117475,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BGY":{"rev":{"Publisher Fee": 175336},"ec_event":-117475,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BGYR":{"rev":{"Publisher Fee": 3630967, "Sponsorship": 2500000},"ec_event":-2365769,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+  },
+  "New Formats":{
+    "B":{"rev":{},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BG":{"rev":{},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BGY":{"rev":{},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BGYR":{"rev":{"Publisher Fee": 7892492},"ec_event":-6708617,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+  },
+  "Corporate":{
+    "B":{"rev":{},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BG":{"rev":{},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BGY":{"rev":{},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BGYR":{"rev":{},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+  },
+  "Acquisitions":{
+    "B":{"rev":{},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BG":{"rev":{},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":0,"ocs":0},
+    "BGY":{"rev":{"Other Revenue": 1792494},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":-846057,"ocs":-846057},
+    "BGYR":{"rev":{"Other Revenue": 1792494},"ec_event":0,"ec_prize":0,"rs":0,"pa":0,"ac":0,"tc":0,"oc":-846057,"ocs":-846057},
+  },
 };
 const ECO_BUD={
   "Premier":{rev:{"Sponsorship":9439,"Media Rights":9655,"Host City":1464,"BLAST Channels":295,"Ticketing":3511,"Merchandise":23},ec_event:-11767,ec_prize:-5709,rs:0,other_cos:-659},
@@ -1989,11 +2057,11 @@ function buildEcoTable(){
     if(components){
       drill={};
       ["B","BG","BGY","BGYR"].forEach(function(sc){
-        drill[sc]={rev:{},ec_event:0,ec_prize:0,rs:0,tick_cos:0,nt_act:0,nt_comm:0,nt_merch:0,nt_oth:0};
+        drill[sc]={rev:{},ec_event:0,ec_prize:0,rs:0,pa:0,ac:0,tc:0,oc:0,ocs:0};
         components.forEach(function(k){
           var d=ECO_DRILL[k]&&ECO_DRILL[k][sc];
           if(!d)return;
-          ["ec_event","ec_prize","rs","tick_cos","nt_act","nt_comm","nt_merch","nt_oth"].forEach(function(f){
+          ["ec_event","ec_prize","rs","pa","ac","tc","oc","ocs"].forEach(function(f){
             drill[sc][f]+=d[f]||0;
           });
           Object.keys(d.rev).forEach(function(t){
@@ -2134,28 +2202,26 @@ function buildEcoTable(){
       b+=childRow("Prize Money", _pmV, cosXid, 28, _eb.ec_prize||null);
     }
 
-    // Revenue Share (always show)
-    var _rsV=drillVals(function(d){return d.rs;});
-    _rsV.bud=_eb.rs||null;
-    b+=childRow("Revenue Share", _rsV, cosXid, 28, _eb.rs||null);
-
-    // Other CoS parent
-    var _ocBud=_eb.other_cos||null;
+    // Other CoS & Rev Share parent — includes rs+pa+ac+tc+oc
+    // Budget for Other CoS & Rev Share = rs + other_cos
+    var _ocBud=(typeof _eb.other_cos==="number"||typeof _eb.rs==="number")?((_eb.rs||0)+(_eb.other_cos||0)):null;
     var ocVals={bud:_ocBud,WV:null};
     ["B","BG","BGY","BGYR"].forEach(function(sc){
       var d=drill[sc]||{};
-      ocVals[sc]=(d.tick_cos||0)+(d.nt_act||0)+(d.nt_comm||0)+(d.nt_merch||0)+(d.nt_oth||0);
+      ocVals[sc]=(d.rs||0)+(d.pa||0)+(d.ac||0)+(d.tc||0)+(d.oc||0);
     });
     ocVals.WV=ocVals.B;
-    b+=childParentRow("Other CoS", ocVals, cosXid, ocXid);
+    // Only show parent row if any value exists
+    var hasOCS=["B","BG","BGY","BGYR"].some(function(sc){return ocVals[sc]&&ocVals[sc]!==0;});
+    if(hasOCS) b+=childParentRow("Other CoS & Rev Share", ocVals, cosXid, ocXid);
 
-    // Other CoS children
+    // Other CoS children — only show if non-zero
     var ocSubs=[
-      {lbl:"Ticketing Cost",    fn:function(d){return d.tick_cos;}},
-      {lbl:"Partner Activation",fn:function(d){return d.nt_act;}},
-      {lbl:"Sponsor Commission",fn:function(d){return d.nt_comm;}},
-      {lbl:"Merch Cost",        fn:function(d){return d.nt_merch;}},
-      {lbl:"Other Cost of Sale",fn:function(d){return d.nt_oth;}},
+      {lbl:"Revenue Share",     fn:function(d){return d.rs||0;}},
+      {lbl:"Partner Activation",fn:function(d){return d.pa||0;}},
+      {lbl:"Agency Commission", fn:function(d){return d.ac||0;}},
+      {lbl:"Ticketing Cost",    fn:function(d){return d.tc||0;}},
+      {lbl:"Other Cost of Sale",fn:function(d){return d.oc||0;}},
     ];
     ocSubs.forEach(function(sub){
       var sv=drillVals(sub.fn);
