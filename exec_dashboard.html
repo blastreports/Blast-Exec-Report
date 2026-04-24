@@ -2073,7 +2073,14 @@ function buildEcoTable(){
   }
   var COLS2=["bud","B","BG","BGY","BGYR","WV"];
 
+  // fkv: for ECO_DRILL values (raw euros → ÷1e6 = €m)
   function fkv(v){
+    if(v===null||v===undefined||v===0)return"\u2014";
+    var m=v/1e6;
+    return(m<0?"(":"")+"\u20ac"+Math.abs(m).toFixed(1)+"m"+(m<0?")":"");
+  }
+  // fkm: for ECOS_RAW summary values (€k → ÷1000 = €m)
+  function fkm(v){
     if(v===null||v===undefined||v===0)return"\u2014";
     var m=v/1000;
     return(m<0?"(":"")+"\u20ac"+Math.abs(m).toFixed(1)+"m"+(m<0?")":"");
@@ -2114,7 +2121,7 @@ function buildEcoTable(){
     var row="<tr class='"+(cls||"")+"'"+cur+"><td>"+arrow+lbl+"</td>";
     COLS2.forEach(function(c){
       var v=e[key]&&e[key][c];
-      row+="<td"+hiCol(c)+" class='"+vcl(v)+"'>"+fkv(v)+"</td>";
+      row+="<td"+hiCol(c)+" class='"+vcl(v)+"'>"+fkm(v)+"</td>";
     });
     row+=vsBud(key)+"</tr>";
     return row;
@@ -2131,7 +2138,7 @@ function buildEcoTable(){
       row+="<td"+hiCol(c)+" class='"+vcl(v)+"' style='font-size:"+sz+"'>"+fkv(v)+"</td>";
     });
     if(typeof budVal==="number"&&typeof vals[SC]==="number"){
-      var bd=+((vals[SC]-budVal)/1000).toFixed(1);
+      var bd=+((vals[SC]-budVal)/1e6).toFixed(1);
       row+="<td style='font-size:"+sz+"' class='"+(bd>=0?"pos":"neg")+"'>"+(bd>=0?"+":"")+bd+"m</td>";
     } else { row+="<td>\u2014</td>"; }
     return row;
@@ -2147,7 +2154,7 @@ function buildEcoTable(){
       row+="<td"+hiCol(c)+" class='"+vcl(v)+"' style='font-size:10.5px'>"+fkv(v)+"</td>";
     });
     if(typeof budVal==="number"&&typeof vals[SC]==="number"){
-      var bd=+((vals[SC]-budVal)/1000).toFixed(1);
+      var bd=+((vals[SC]-budVal)/1e6).toFixed(1);
       row+="<td style='font-size:10.5px' class='"+(bd>=0?"pos":"neg")+"'>"+(bd>=0?"+":"")+bd+"m</td>";
     } else { row+="<td>\u2014</td>"; }
     row+="</tr>";
@@ -2181,7 +2188,7 @@ function buildEcoTable(){
       ["B","BG","BGY","BGYR"].forEach(function(sc){vals[sc]=drill[sc]?(drill[sc].rev[k]||0):0;});
       vals.WV=vals.B;
       var bv=(_eb.rev&&_eb.rev[k]!==undefined)?_eb.rev[k]:null;
-      vals.bud=bv;
+      vals.bud=bv!=null?bv*1000:null;
       b+=childRow(k,vals,revXid,28,bv);
     });
   }
@@ -2191,20 +2198,20 @@ function buildEcoTable(){
   if(drill){
     // Event Costs
     var _ecV=drillVals(function(d){return d.ec_event;});
-    _ecV.bud=_eb.ec_event||null;
+    _ecV.bud=_eb.ec_event!=null?_eb.ec_event*1000:null;
     b+=childRow("Event Costs", _ecV, cosXid, 28, _eb.ec_event||null);
 
     // Prize Money (only if non-zero anywhere)
     var hasPM=["B","BG","BGY","BGYR"].some(function(sc){return drill[sc]&&drill[sc].ec_prize!==0;});
     if(hasPM){
       var _pmV=drillVals(function(d){return d.ec_prize;});
-      _pmV.bud=_eb.ec_prize||null;
+      _pmV.bud=_eb.ec_prize!=null?_eb.ec_prize*1000:null;
       b+=childRow("Prize Money", _pmV, cosXid, 28, _eb.ec_prize||null);
     }
 
     // Other CoS & Rev Share parent — includes rs+pa+ac+tc+oc
     // Budget for Other CoS & Rev Share = rs + other_cos
-    var _ocBud=(typeof _eb.other_cos==="number"||typeof _eb.rs==="number")?((_eb.rs||0)+(_eb.other_cos||0)):null;
+    var _ocBud=(typeof _eb.other_cos==="number"||typeof _eb.rs==="number")?((_eb.rs||0)+(_eb.other_cos||0))*1000:null;
     var ocVals={bud:_ocBud,WV:null};
     ["B","BG","BGY","BGYR"].forEach(function(sc){
       var d=drill[sc]||{};
@@ -2240,7 +2247,7 @@ function buildEcoTable(){
     b+="<tr class='"+cl+"'><td>"+r.l+"</td>";
     COLS2.forEach(function(c){
       var v=e[r.k]&&e[r.k][c];
-      b+="<td"+hiCol(c)+" class='"+(r.pct?"":vcl(v))+"'>"+(r.pct?(v||"\u2014"):fkv(v))+"</td>";
+      b+="<td"+hiCol(c)+" class='"+(r.pct?"":vcl(v))+"'>"+(r.pct?(v||"\u2014"):fkm(v))+"</td>";
     });
     b+=vsBud(r.k)+"</tr>";
   });
